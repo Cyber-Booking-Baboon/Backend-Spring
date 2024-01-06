@@ -13,6 +13,7 @@ import rs.ac.uns.ftn.BookingBaboon.dtos.reports.ReviewReportUpdateRequest;
 import rs.ac.uns.ftn.BookingBaboon.services.reports.interfaces.IReviewReportService;
 import rs.ac.uns.ftn.BookingBaboon.services.reports.interfaces.IReviewReportService;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
@@ -25,13 +26,10 @@ public class ReviewReportController {
     private final ModelMapper mapper;
 
 
-    @GetMapping
-    public ResponseEntity<Collection<ReviewReportResponse>> getReviewReports() {
+    @GetMapping()
+    public ResponseEntity<Collection<ReviewReport>> getReviewReports() {
         Collection<ReviewReport> reviewReports = service.getAll();
-        Collection<ReviewReportResponse> reviewReportResponses =  reviewReports.stream()
-                .map(reviewReport -> mapper.map(reviewReport, ReviewReportResponse.class))
-                .collect(Collectors.toList());
-        return new ResponseEntity<>(reviewReportResponses, HttpStatus.OK);
+        return new ResponseEntity<>(reviewReports, HttpStatus.OK);
     }
 
     @GetMapping({"/{reviewReportId}"})
@@ -56,7 +54,7 @@ public class ReviewReportController {
         return new ResponseEntity<>(mapper.map(service.update(mapper.map(reviewReport, ReviewReport.class)),ReviewReportResponse.class),HttpStatus.OK);
     }
 
-    @PreAuthorize("hasAuthority('HOST')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping("/{reviewReportId}")
     public ResponseEntity<ReviewReportResponse> remove(@PathVariable Long reviewReportId) {
 
