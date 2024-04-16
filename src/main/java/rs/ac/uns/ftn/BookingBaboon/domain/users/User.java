@@ -13,7 +13,7 @@ import java.util.Set;
 @Data
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "users")
-@TableGenerator(name="user_id_generator", table="primary_keys", pkColumnName="key_pk", pkColumnValue="user", initialValue=10, valueColumnName="value_pk")
+@TableGenerator(name="user_id_generator", table="primary_keys", pkColumnName="key_pk", pkColumnValue="user", initialValue=11, valueColumnName="value_pk")
 public class User{
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "user_id_generator")
