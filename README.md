@@ -27,4 +27,6 @@ Login credentials for test data:
   - email: frank.white@example.com , password: franksspass
 - Admin:
   - email: helen.martin@example.com , password: helenspass
+- SysAdmin:
+  - email: sys.admin@example.com , password: helenspass
 
