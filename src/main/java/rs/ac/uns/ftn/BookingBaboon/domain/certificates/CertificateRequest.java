@@ -3,9 +3,9 @@ package rs.ac.uns.ftn.BookingBaboon.domain.certificates;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import rs.ac.uns.ftn.BookingBaboon.pki.domain.Subject;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -16,6 +16,7 @@ public class CertificateRequest {
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "certificate_request_id_generator")
     private Long id;
 
+    private String alias;
     //Subject
     private String subjectCN; // Common Name
     private String subjectSurname; // Surname
@@ -28,6 +29,7 @@ public class CertificateRequest {
 
     private Date startDate;
     private Date endDate;
-//    List<Extension> extensions;
+
+    List<CertificateExtension> extensions;
 
 }
