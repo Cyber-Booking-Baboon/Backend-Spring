@@ -16,4 +16,8 @@ public interface ICertificateRequestService {
 
     CertificateRequest remove(Long certificateRequestId);
 
+    CertificateRequest approve(Long certificateRequestId) throws ResponseStatusException;
+
+    CertificateRequest deny(Long certificateRequestId) throws ResponseStatusException;
+
 }

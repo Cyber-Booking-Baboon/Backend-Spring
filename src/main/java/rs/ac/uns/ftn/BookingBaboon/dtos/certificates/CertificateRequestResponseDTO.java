@@ -2,6 +2,7 @@ package rs.ac.uns.ftn.BookingBaboon.dtos.certificates;
 
 import lombok.Data;
 import rs.ac.uns.ftn.BookingBaboon.domain.certificates.CertificateExtension;
+import rs.ac.uns.ftn.BookingBaboon.services.certificates.CertificateRequestStatus;
 
 import java.util.Date;
 import java.util.List;
@@ -23,6 +24,8 @@ public class CertificateRequestResponseDTO {
 
     private Date startDate;
     private Date endDate;
+
+    private CertificateRequestStatus status;
 
     List<CertificateExtension> extensions;
 }

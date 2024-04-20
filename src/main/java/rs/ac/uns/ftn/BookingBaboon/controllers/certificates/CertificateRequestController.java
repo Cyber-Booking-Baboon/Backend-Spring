@@ -68,4 +68,17 @@ public class CertificateRequestController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @PostMapping("/{id}/approve")
+    public ResponseEntity<CertificateRequestResponseDTO> approve(@PathVariable Long id) {
+        CertificateRequest certificateRequest = service.approve(id);
+        return new ResponseEntity<>(mapper.map(certificateRequest, CertificateRequestResponseDTO.class), HttpStatus.OK);
+    }
+
+    @PutMapping("/{id}/deny")
+    public ResponseEntity<CertificateRequestResponseDTO> deny(@PathVariable Long id) {
+        CertificateRequest certificateRequest = service.deny(id);
+        return new ResponseEntity<>(mapper.map(certificateRequest, CertificateRequestResponseDTO.class), HttpStatus.OK);
+    }
+
 }

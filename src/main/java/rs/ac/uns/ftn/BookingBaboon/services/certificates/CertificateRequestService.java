@@ -1,14 +1,21 @@
 package rs.ac.uns.ftn.BookingBaboon.services.certificates;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 import rs.ac.uns.ftn.BookingBaboon.domain.certificates.CertificateRequest;
+import rs.ac.uns.ftn.BookingBaboon.dtos.certificates.CertificateCreateDTO;
 import rs.ac.uns.ftn.BookingBaboon.repositories.certificates.ICertificateRequestRepository;
 import rs.ac.uns.ftn.BookingBaboon.services.users.UserService;
 
@@ -18,6 +25,7 @@ import java.util.*;
 @Service
 public class CertificateRequestService implements ICertificateRequestService {
     private final ICertificateRequestRepository repository;
+    private final RestTemplate restTemplate;
     ResourceBundle bundle = ResourceBundle.getBundle("ValidationMessages", LocaleContextHolder.getLocale());
 
     @Override
@@ -83,5 +91,65 @@ public class CertificateRequestService implements ICertificateRequestService {
         repository.delete(found);
         repository.flush();
         return found;
+    }
+
+    @Override
+    public CertificateRequest approve(Long certificateRequestId) throws ResponseStatusException {
+        Optional<CertificateRequest> found = repository.findById(certificateRequestId);
+        if (found.isEmpty()) {
+            String value = bundle.getString("certificateRequest.notFound");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, value);
+        }
+        CertificateRequest request = found.get();
+        if (!request.getStatus().equals(CertificateRequestStatus.PENDING)) {
+            String value = bundle.getString("certificateRequest.notPending");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, value);
+        }
+        request.approve();
+        sendCertificateRequest(request);
+        repository.flush();
+        return request;
+    }
+
+    @Override
+    public CertificateRequest deny(Long certificateRequestId) throws ResponseStatusException {
+        Optional<CertificateRequest> found = repository.findById(certificateRequestId);
+        if (found.isEmpty()) {
+            String value = bundle.getString("certificateRequest.notFound");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, value);
+        }
+        CertificateRequest request = found.get();
+        if (!request.getStatus().equals(CertificateRequestStatus.PENDING)) {
+            String value = bundle.getString("certificateRequest.notPending");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, value);
+        }
+        request.deny();
+        repository.flush();
+        return request;
+    }
+
+    public void sendCertificateRequest(CertificateRequest certificateRequest) {
+        String url = "http://localhost:9090/api/certificates";
+
+        String jsonBody = serializeCertificateRequestToJson(new CertificateCreateDTO(certificateRequest));
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        HttpEntity<String> requestEntity = new HttpEntity<>(jsonBody, headers);
+
+        restTemplate.postForEntity(url, requestEntity, Void.class);
+    }
+
+    private String serializeCertificateRequestToJson(CertificateCreateDTO certificateRequest) {
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        try {
+            String json = objectMapper.writeValueAsString(certificateRequest);
+            return json;
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

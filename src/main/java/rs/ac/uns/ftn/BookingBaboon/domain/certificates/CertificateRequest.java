@@ -3,6 +3,9 @@ package rs.ac.uns.ftn.BookingBaboon.domain.certificates;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.web.server.ResponseStatusException;
+import rs.ac.uns.ftn.BookingBaboon.services.certificates.CertificateRequestStatus;
 
 import java.util.Date;
 import java.util.List;
@@ -17,6 +20,7 @@ public class CertificateRequest {
     private Long id;
 
     private String alias;
+    private String issuerAlias;
     //Subject
     private String subjectCN; // Common Name
     private String subjectSurname; // Surname
@@ -30,6 +34,16 @@ public class CertificateRequest {
     private Date startDate;
     private Date endDate;
 
+    private CertificateRequestStatus status = CertificateRequestStatus.PENDING;
+
     List<CertificateExtension> extensions;
+
+    public void approve() {
+        status = CertificateRequestStatus.APPROVED;
+    }
+
+    public void deny(){
+        status = CertificateRequestStatus.DENIED;
+    }
 
 }
