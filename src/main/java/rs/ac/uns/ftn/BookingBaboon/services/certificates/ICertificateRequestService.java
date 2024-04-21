@@ -1,5 +1,6 @@
 package rs.ac.uns.ftn.BookingBaboon.services.certificates;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.server.ResponseStatusException;
 import rs.ac.uns.ftn.BookingBaboon.domain.certificates.CertificateRequest;
 
@@ -20,4 +21,5 @@ public interface ICertificateRequestService {
 
     CertificateRequest deny(Long certificateRequestId) throws ResponseStatusException;
 
+    ResponseEntity<String> getPrivateKey(String alias, Long id, String authorizationHeader);
 }

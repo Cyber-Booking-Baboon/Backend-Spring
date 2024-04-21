@@ -6,14 +6,11 @@ import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.i18n.LocaleContextHolder;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
+import rs.ac.uns.ftn.BookingBaboon.config.security.JwtTokenUtil;
 import rs.ac.uns.ftn.BookingBaboon.domain.certificates.CertificateRequest;
 import rs.ac.uns.ftn.BookingBaboon.dtos.certificates.CertificateCreateDTO;
 import rs.ac.uns.ftn.BookingBaboon.repositories.certificates.ICertificateRequestRepository;
@@ -26,6 +23,8 @@ import java.util.*;
 public class CertificateRequestService implements ICertificateRequestService {
     private final ICertificateRequestRepository repository;
     private final RestTemplate restTemplate;
+    private final JwtTokenUtil tokenUtil;
+    private final UserService userService;
     ResourceBundle bundle = ResourceBundle.getBundle("ValidationMessages", LocaleContextHolder.getLocale());
 
     @Override
@@ -126,6 +125,22 @@ public class CertificateRequestService implements ICertificateRequestService {
         request.deny();
         repository.flush();
         return request;
+    }
+
+    @Override
+    public ResponseEntity<String> getPrivateKey(String alias, Long id, String authorizationHeader) {
+        if(authorizationHeader == null) throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Not authorized");
+        String userId = userService.getByEmail(tokenUtil.getUsernameFromToken(authorizationHeader.substring(7))).getId().toString();
+        if(!userId.equals(id.toString())) throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Not authorized");
+        return sendPrivateKetRequest(alias, id);
+
+
+
+    }
+
+    private ResponseEntity<String> sendPrivateKetRequest(String alias, Long id) {
+        String url = "http://localhost:9090/api/certificates/" + id.toString() + "/pk/" + alias;
+        return restTemplate.getForEntity(url, String.class);
     }
 
     public void sendCertificateRequest(CertificateRequest certificateRequest) {

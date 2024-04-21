@@ -81,4 +81,13 @@ public class CertificateRequestController {
         return new ResponseEntity<>(mapper.map(certificateRequest, CertificateRequestResponseDTO.class), HttpStatus.OK);
     }
 
+    @GetMapping("/{id}/pk/{alias}")
+    public ResponseEntity<String> getPrivateKey(@PathVariable Long id, @PathVariable String alias,@RequestHeader("Authorization") String authorizationHeader)  {
+        try{
+            return service.getPrivateKey(alias, id, authorizationHeader);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
+    }
+
 }
