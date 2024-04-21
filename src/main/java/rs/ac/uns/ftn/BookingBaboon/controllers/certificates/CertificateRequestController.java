@@ -6,8 +6,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rs.ac.uns.ftn.BookingBaboon.domain.certificates.CertificateRequest;
+import rs.ac.uns.ftn.BookingBaboon.dtos.certificates.CertificateCreateDTO;
 import rs.ac.uns.ftn.BookingBaboon.dtos.certificates.CertificateRequestCreateDTO;
 import rs.ac.uns.ftn.BookingBaboon.dtos.certificates.CertificateRequestResponseDTO;
+import rs.ac.uns.ftn.BookingBaboon.dtos.certificates.CertificateResponseDTO;
 import rs.ac.uns.ftn.BookingBaboon.services.certificates.ICertificateRequestService;
 
 import java.util.Collection;
@@ -23,9 +25,9 @@ public class CertificateRequestController {
 
     @GetMapping
     public ResponseEntity<Collection<CertificateRequestResponseDTO>> getAll() {
-        Collection<CertificateRequest> amenities = service.getAll();
+        Collection<CertificateRequest> requests = service.getAll();
 
-        return new ResponseEntity<>(amenities.stream()
+        return new ResponseEntity<>(requests.stream()
                 .map(certificateRequest -> mapper.map(certificateRequest, CertificateRequestResponseDTO.class))
                 .collect(Collectors.toList()), HttpStatus.OK);
     }
@@ -89,5 +91,20 @@ public class CertificateRequestController {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
     }
+
+    @GetMapping("/host/{id}")
+    public ResponseEntity<Collection<CertificateRequestResponseDTO>> getAllByHost(@PathVariable String id) {
+        Collection<CertificateRequest> requests = service.getAllByHost(id);
+
+        return new ResponseEntity<>(requests.stream()
+                .map(certificateRequest -> mapper.map(certificateRequest, CertificateRequestResponseDTO.class))
+                .collect(Collectors.toList()), HttpStatus.OK);
+    }
+
+    @GetMapping("certificate/host/{id}")
+    public ResponseEntity<CertificateResponseDTO> getCertificateByHost(@PathVariable String id) {
+        return service.getCertificateByHost(id);
+    }
+
 
 }

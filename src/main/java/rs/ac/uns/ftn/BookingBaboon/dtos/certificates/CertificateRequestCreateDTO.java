@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 public class CertificateRequestCreateDTO {
     private String alias;
-
+    private String issuerAlias;
     //Subject
     private String subjectCN; // Common Name
     private String subjectSurname; // Surname
