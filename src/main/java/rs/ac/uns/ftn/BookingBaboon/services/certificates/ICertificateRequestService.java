@@ -20,4 +20,5 @@ public interface ICertificateRequestService {
 
     CertificateRequest deny(Long certificateRequestId) throws ResponseStatusException;
 
+    Collection<CertificateRequest> getAllPending();
 }

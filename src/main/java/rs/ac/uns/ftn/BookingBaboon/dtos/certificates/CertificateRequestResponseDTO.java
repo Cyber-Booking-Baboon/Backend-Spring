@@ -12,6 +12,7 @@ public class CertificateRequestResponseDTO {
     private Long id;
 
     private String alias;
+    private String issuerAlias;
     //Subject
     private String subjectCN; // Common Name
     private String subjectSurname; // Surname

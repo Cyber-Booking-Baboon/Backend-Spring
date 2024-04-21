@@ -30,6 +30,15 @@ public class CertificateRequestController {
                 .collect(Collectors.toList()), HttpStatus.OK);
     }
 
+    @GetMapping("/pending")
+    public ResponseEntity<Collection<CertificateRequestResponseDTO>> getAllPending() {
+        Collection<CertificateRequest> amenities = service.getAllPending();
+
+        return new ResponseEntity<>(amenities.stream()
+                .map(certificateRequest -> mapper.map(certificateRequest, CertificateRequestResponseDTO.class))
+                .collect(Collectors.toList()), HttpStatus.OK);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<CertificateRequestResponseDTO> get(@PathVariable Long id) {
         CertificateRequest certificateRequest = service.get(id);

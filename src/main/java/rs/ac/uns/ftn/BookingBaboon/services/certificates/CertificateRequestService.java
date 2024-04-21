@@ -128,6 +128,11 @@ public class CertificateRequestService implements ICertificateRequestService {
         return request;
     }
 
+    @Override
+    public Collection<CertificateRequest> getAllPending() {
+        return new ArrayList<CertificateRequest>(repository.findByStatus(CertificateRequestStatus.PENDING));
+    }
+
     public void sendCertificateRequest(CertificateRequest certificateRequest) {
         String url = "http://localhost:9090/api/certificates";
 
