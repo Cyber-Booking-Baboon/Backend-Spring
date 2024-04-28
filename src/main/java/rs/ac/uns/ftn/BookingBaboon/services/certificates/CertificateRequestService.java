@@ -7,6 +7,8 @@ import jakarta.validation.ConstraintViolationException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.*;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
@@ -17,6 +19,7 @@ import rs.ac.uns.ftn.BookingBaboon.dtos.certificates.CertificateResponseDTO;
 import rs.ac.uns.ftn.BookingBaboon.repositories.certificates.ICertificateRequestRepository;
 import rs.ac.uns.ftn.BookingBaboon.services.users.UserService;
 
+import javax.net.ssl.SSLContext;
 import java.util.*;
 
 @RequiredArgsConstructor
@@ -161,18 +164,18 @@ public class CertificateRequestService implements ICertificateRequestService {
     }
 
     private ResponseEntity<String> sendPrivateKeyRequest(String alias, Long id) {
-        String url = "http://localhost:9090/api/certificates/" + id.toString() + "/pk/" + alias;
+        String url = "https://localhost:9090/api/certificates/" + id.toString() + "/pk/" + alias;
         return restTemplate.getForEntity(url, String.class);
     }
 
     public ResponseEntity<CertificateResponseDTO> getCertificate(String alias){
-        String url = "http://localhost:9090/api/certificates/" + alias;
+        String url = "https://localhost:9090/api/certificates/" + alias;
         return restTemplate.getForEntity(url, CertificateResponseDTO.class);
     }
 
 
     public void sendCertificateRequest(CertificateRequest certificateRequest) {
-        String url = "http://localhost:9090/api/certificates";
+        String url = "https://localhost:9090/api/certificates";
 
         String jsonBody = serializeCertificateRequestToJson(new CertificateCreateDTO(certificateRequest));
 
