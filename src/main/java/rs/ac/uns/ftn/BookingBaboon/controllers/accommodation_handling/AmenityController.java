@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import rs.ac.uns.ftn.BookingBaboon.domain.accommodation_handling.Amenity;
 import rs.ac.uns.ftn.BookingBaboon.domain.accommodation_handling.AvailablePeriod;
@@ -25,6 +26,7 @@ public class AmenityController {
     private final ModelMapper mapper;
 
     @GetMapping
+    @PreAuthorize("hasRole('admin')")
     public ResponseEntity<Collection<AmenityResponse>> getAll() {
         Collection<Amenity> amenities = service.getAll();
 
