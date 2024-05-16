@@ -72,9 +72,7 @@ public class WebSecurityConfiguration{
     @Bean
     public SecurityFilterChain resourceServerFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(auth -> auth
-                .requestMatchers(new AntPathRequestMatcher("/customers*"))
-                .hasRole("user")
-                .requestMatchers(new AntPathRequestMatcher("/"))
+                .requestMatchers(new AntPathRequestMatcher("/*"))
                 .permitAll()
                 .anyRequest()
                 .authenticated());
