@@ -1,5 +1,6 @@
 package rs.ac.uns.ftn.BookingBaboon.controllers.reports;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1/review-reports")
+@SecurityRequirement(name = "Keycloak")
 public class ReviewReportController {
     private final IReviewReportService service;
     private final ModelMapper mapper;

@@ -3,6 +3,7 @@ package rs.ac.uns.ftn.BookingBaboon.controllers.accommodation_handling;
 import com.itextpdf.html2pdf.HtmlConverter;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +28,7 @@ import java.util.Locale;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1/summary")
+@SecurityRequirement(name = "Keycloak")
 public class SummaryController {
 
     private final ISummaryService service;

@@ -1,5 +1,6 @@
 package rs.ac.uns.ftn.BookingBaboon.controllers.accommodation_handling;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
@@ -20,13 +21,13 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1/amenities")
+@SecurityRequirement(name = "Keycloak")
 public class AmenityController {
 
     private final IAmenityService service;
     private final ModelMapper mapper;
 
     @GetMapping
-    @PreAuthorize("hasRole('admin')")
     public ResponseEntity<Collection<AmenityResponse>> getAll() {
         Collection<Amenity> amenities = service.getAll();
 

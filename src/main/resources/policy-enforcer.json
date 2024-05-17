@@ -1,0 +1,18 @@
+{
+  "realm": "CyberBookingBaboon",
+  "auth-server-url": "http://localhost:8180",
+  "resource": "booking-baboon-app",
+  "credentials": {
+    "secret": "6EUWuTh2j6t2lqjTesDgHaMJwMsmVvhr"
+  },
+  "http-method-as-scope": true,
+  "paths" : [
+    {
+      "path": "/swagger-ui/*",
+      "enforcement-mode": "DISABLED"
+    },{
+      "path": "/v3/api-docs/*",
+      "enforcement-mode": "DISABLED"
+    }
+  ]
+}

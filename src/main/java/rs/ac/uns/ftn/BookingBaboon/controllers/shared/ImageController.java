@@ -1,5 +1,6 @@
 package rs.ac.uns.ftn.BookingBaboon.controllers.shared;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Value;
@@ -32,6 +33,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1/images")
+@SecurityRequirement(name = "Keycloak")
 public class ImageController {
 
     private final IImageService service;

@@ -1,5 +1,6 @@
 package rs.ac.uns.ftn.BookingBaboon.controllers.users;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("api/v1/hosts")
+@SecurityRequirement(name = "Keycloak")
 public class HostController {
     private final IHostService service;
     private final ModelMapper mapper;
