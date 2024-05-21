@@ -43,6 +43,7 @@ public class UserController {
     private final SecurityContext sc = SecurityContextHolder.getContext();
 
 
+
     @GetMapping
     public ResponseEntity<Collection<UserResponse>> getUsers() {
         Collection<User> users = service.getAll();
@@ -65,6 +66,8 @@ public class UserController {
     public ResponseEntity<UserResponse> create(@RequestBody UserCreateRequest user) {
         return new ResponseEntity<>(mapper.map(service.create(mapper.map(user, User.class)),UserResponse.class), HttpStatus.CREATED);
     }
+
+
 
     @PutMapping({"/"})
     public ResponseEntity<UserResponse> update(@RequestBody UserUpdateRequest user) {

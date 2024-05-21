@@ -3,6 +3,7 @@ package rs.ac.uns.ftn.BookingBaboon.controllers.users;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import rs.ac.uns.ftn.BookingBaboon.domain.users.Host;
 import rs.ac.uns.ftn.BookingBaboon.dtos.users.hosts.*;
 import rs.ac.uns.ftn.BookingBaboon.services.users.interfaces.IHostService;
 import rs.ac.uns.ftn.BookingBaboon.dtos.users.hosts.HostResponse;
+import rs.ac.uns.ftn.BookingBaboon.services.users.ldap.LdapUserService;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -24,6 +26,9 @@ import java.util.stream.Collectors;
 public class HostController {
     private final IHostService service;
     private final ModelMapper mapper;
+
+    @Autowired
+    private LdapUserService ldapUserService;
 
     @GetMapping
     public ResponseEntity<Collection<HostResponse>> getHosts() {
@@ -45,6 +50,7 @@ public class HostController {
 
     @PostMapping({"/"})
     public ResponseEntity<HostResponse> create(@RequestBody HostCreateRequest host) {
+        ldapUserService.createUser(host.getEmail(), host.getPassword(), host.getFirstName(), host.getLastName(), "host");
         return new ResponseEntity<>(mapper.map(service.create(mapper.map(host, Host.class)),HostResponse.class), HttpStatus.CREATED);
     }
 
