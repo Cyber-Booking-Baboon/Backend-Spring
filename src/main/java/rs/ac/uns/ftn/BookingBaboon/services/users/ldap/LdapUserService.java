@@ -10,6 +10,7 @@ import javax.naming.Name;
 import javax.naming.directory.Attributes;
 import javax.naming.directory.BasicAttribute;
 import javax.naming.directory.BasicAttributes;
+import javax.naming.directory.ModificationItem;
 import java.util.List;
 
 @Service
@@ -37,6 +38,16 @@ public class LdapUserService {
         attributes.put("userPassword", password);
         attributes.put("employeeType", role);
 
+        addRole(username,"cn=" + role.toLowerCase() + ",ou=roles");
+
         ldapTemplate.bind(dn, null, attributes);
+    }
+
+    public void addRole(String username, String roleDn) {
+        String userDn = "uid=" + username + ",ou=users,dc=example,dc=com";
+
+        ldapTemplate.modifyAttributes(roleDn, new ModificationItem[]{
+                new ModificationItem(DirContextOperations.ADD_ATTRIBUTE, new BasicAttribute("member", userDn))
+        });
     }
 }
