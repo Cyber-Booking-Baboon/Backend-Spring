@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.*;
 import rs.ac.uns.ftn.BookingBaboon.domain.accommodation_handling.Accommodation;
 import rs.ac.uns.ftn.BookingBaboon.domain.notifications.NotificationType;
 import rs.ac.uns.ftn.BookingBaboon.domain.users.Guest;
+import rs.ac.uns.ftn.BookingBaboon.domain.users.Host;
 import rs.ac.uns.ftn.BookingBaboon.dtos.accommodation_handling.accommodation.AccommodationResponse;
 import rs.ac.uns.ftn.BookingBaboon.dtos.users.guests.*;
+import rs.ac.uns.ftn.BookingBaboon.dtos.users.hosts.HostResponse;
 import rs.ac.uns.ftn.BookingBaboon.services.users.interfaces.IGuestService;
 import rs.ac.uns.ftn.BookingBaboon.services.users.ldap.LdapUserService;
 
@@ -52,9 +54,9 @@ public class GuestController {
 
     @PostMapping({"/"})
     public ResponseEntity<GuestResponse> create(@RequestBody GuestCreateRequest guest) {
-//        ldapUserService.createUser(guest.getEmail(), guest.getPassword(), guest.getFirstName(), guest.getLastName(), List.of("guest"));
-        ldapUserService.createUser(guest.getEmail(), guest.getPassword(), guest.getFirstName(), guest.getLastName(), "guest");
-        return new ResponseEntity<>(mapper.map(service.create(mapper.map(guest, Guest.class)),GuestResponse.class), HttpStatus.CREATED);
+        Guest result = service.create(mapper.map(guest, Guest.class));
+        ldapUserService.createUser(result.getId().toString(), result.getEmail(), guest.getPassword(), result.getFirstName(), result.getLastName(), "guest");
+        return new ResponseEntity<>(mapper.map(result,GuestResponse.class), HttpStatus.CREATED);
     }
 
     @PutMapping({"/"})

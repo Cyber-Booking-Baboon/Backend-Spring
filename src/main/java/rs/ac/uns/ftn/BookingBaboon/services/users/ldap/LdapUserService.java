@@ -19,7 +19,7 @@ public class LdapUserService {
     @Autowired
     private LdapTemplate ldapTemplate;
 
-    public void createUser(String username, String password, String cn, String sn, String role) {
+    public void createUser(String userId, String username, String password, String cn, String sn, String role) {
         Name dn = LdapNameBuilder.newInstance()
                 .add("ou", "users")
                 .add("uid", username)
@@ -37,6 +37,7 @@ public class LdapUserService {
         attributes.put("uid", username);
         attributes.put("userPassword", password);
         attributes.put("employeeType", role);
+        attributes.put("givenName", userId);
 
         addRole(username,"cn=" + role.toLowerCase() + ",ou=roles");
 

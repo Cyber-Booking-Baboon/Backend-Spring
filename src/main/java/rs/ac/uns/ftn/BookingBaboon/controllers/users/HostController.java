@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rs.ac.uns.ftn.BookingBaboon.domain.notifications.NotificationType;
 import rs.ac.uns.ftn.BookingBaboon.domain.reservation.Reservation;
+import rs.ac.uns.ftn.BookingBaboon.domain.users.Guest;
 import rs.ac.uns.ftn.BookingBaboon.domain.users.Host;
 import rs.ac.uns.ftn.BookingBaboon.dtos.users.hosts.*;
 import rs.ac.uns.ftn.BookingBaboon.services.users.interfaces.IHostService;
@@ -50,8 +51,9 @@ public class HostController {
 
     @PostMapping({"/"})
     public ResponseEntity<HostResponse> create(@RequestBody HostCreateRequest host) {
-        ldapUserService.createUser(host.getEmail(), host.getPassword(), host.getFirstName(), host.getLastName(), "host");
-        return new ResponseEntity<>(mapper.map(service.create(mapper.map(host, Host.class)),HostResponse.class), HttpStatus.CREATED);
+        Host result = service.create(mapper.map(host, Host.class));
+        ldapUserService.createUser(result.getId().toString(), result.getEmail(), host.getPassword(), result.getFirstName(), result.getLastName(), "host");
+        return new ResponseEntity<>(mapper.map(result, HostResponse.class), HttpStatus.CREATED);
     }
 
     @PutMapping({"/"})
