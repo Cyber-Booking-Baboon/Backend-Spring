@@ -1,0 +1,147 @@
+{
+  "realm" : "CyberBookingBaboon",
+  "users" : [ {
+    "id" : "50aad55c-697c-4d2f-9577-fccb6eda4809",
+    "username" : "admin",
+    "emailVerified" : true,
+    "createdTimestamp" : 1716019464387,
+    "enabled" : true,
+    "totp" : false,
+    "credentials" : [ {
+      "id" : "74277227-776a-4fd1-a1fc-323487a363de",
+      "type" : "password",
+      "userLabel" : "My password",
+      "createdDate" : 1716019483320,
+      "secretData" : "{\"value\":\"YdhsetJpRjriIFJN9Ds7KAhgXknDp6oYZwOATvOdUUKYrjxk07TL1VBx/USRMM9rRX+GKKP06hB4z5QauwJIcA==\",\"salt\":\"KsJ4k5OFzQ230ORvwIPyVw==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":210000,\"algorithm\":\"pbkdf2-sha512\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "admin", "default-roles-cyberbookingbaboon" ],
+    "clientRoles" : {
+      "realm-management" : [ "realm-admin" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "d55e2a1a-c58b-4adf-80ff-ceb398c1a1db",
+    "username" : "branko",
+    "emailVerified" : true,
+    "createdTimestamp" : 1715893917242,
+    "enabled" : true,
+    "totp" : false,
+    "credentials" : [ {
+      "id" : "1b498f02-5406-49f0-91f2-f0087255014d",
+      "type" : "password",
+      "userLabel" : "My password",
+      "createdDate" : 1715893994569,
+      "secretData" : "{\"value\":\"BL4bzrl8XGl6VUimUa+AlxzngjqFPjPosQnxlDaOShrv4WPYbZObWeWLG+HQyF2AjQFEMrmPsAvYCm06wtk3dQ==\",\"salt\":\"O7H1QIv+5nxwYTtFx1pYmQ==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":210000,\"algorithm\":\"pbkdf2-sha512\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "guest", "default-roles-cyberbookingbaboon" ],
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "b5acd692-9fe8-430a-8623-41bfb959ef3d",
+    "username" : "branko@example.com",
+    "lastName" : "testSurname",
+    "emailVerified" : false,
+    "attributes" : {
+      "LDAP_ENTRY_DN" : [ "uid=branko@example.com,ou=users,dc=example,dc=com" ],
+      "Airplane" : [ "263" ],
+      "LDAP_ID" : [ "3bba8aee-b3af-46e1-96ef-d8c5168fdea2" ]
+    },
+    "createdTimestamp" : 1716403495091,
+    "enabled" : true,
+    "totp" : false,
+    "federationLink" : "9f3c8019-073a-44f4-9cb7-ac21ce8a7465",
+    "credentials" : [ ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "guest", "default-roles-cyberbookingbaboon" ],
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "aa1ec64d-af41-427f-9647-fcd92400539a",
+    "username" : "ilija",
+    "emailVerified" : true,
+    "createdTimestamp" : 1715893955930,
+    "enabled" : true,
+    "totp" : false,
+    "credentials" : [ {
+      "id" : "5f6024ed-bc2b-4ad7-b01a-a81d10302932",
+      "type" : "password",
+      "userLabel" : "My password",
+      "createdDate" : 1715893984740,
+      "secretData" : "{\"value\":\"N7JfUEiMAihWVsxvbf1Ul7uFeCEiGQUizZzN6hyiNmS1n929Iug2dJuNNhD65sSsxJxelNHd+XY6mtZKRuKqsg==\",\"salt\":\"WGYoUTq9BPztD66jGKX4sg==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":210000,\"algorithm\":\"pbkdf2-sha512\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "admin", "default-roles-cyberbookingbaboon" ],
+    "clientRoles" : {
+      "realm-management" : [ "realm-admin" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "e240f28a-22fc-45cd-b06d-df601838f189",
+    "username" : "marko",
+    "emailVerified" : true,
+    "createdTimestamp" : 1715893938905,
+    "enabled" : true,
+    "totp" : false,
+    "credentials" : [ {
+      "id" : "7845029a-8ae8-4b33-b9a6-93c556ea1b8c",
+      "type" : "password",
+      "userLabel" : "My password",
+      "createdDate" : 1715893976774,
+      "secretData" : "{\"value\":\"CdCE5QgwqVRLznnsK7qhZ5EruX+6SoxFbTVOCkWK3iKkgdq/9s0YkKg2LguP3D/JDrBLEgvXvNCd2p8fJn9J8w==\",\"salt\":\"r6aWbEj2vkq6WTWHVvwbdg==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":210000,\"algorithm\":\"pbkdf2-sha512\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-cyberbookingbaboon", "host" ],
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "aeee424c-72d5-4a13-9851-9330b0f58384",
+    "username" : "service-account-booking-baboon-app",
+    "emailVerified" : false,
+    "createdTimestamp" : 1715949642093,
+    "enabled" : true,
+    "totp" : false,
+    "serviceAccountClientId" : "booking-baboon-app",
+    "credentials" : [ ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-cyberbookingbaboon" ],
+    "clientRoles" : {
+      "booking-baboon-app" : [ "uma_protection" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "168b5bfa-34e1-45ab-a020-01e398528910",
+    "username" : "test-user-1",
+    "emailVerified" : true,
+    "createdTimestamp" : 1715872162256,
+    "enabled" : true,
+    "totp" : false,
+    "credentials" : [ {
+      "id" : "1703a988-24b5-467f-80c6-03f1b4f828ea",
+      "type" : "password",
+      "userLabel" : "My password",
+      "createdDate" : 1715872305887,
+      "secretData" : "{\"value\":\"TDIsy5to+0D2J1eLSrATx3qZyWWonE8T5KyF2MKw90Rs1qrISqcB2N0TmOVU4MtTtbzO/LcDVSaElhizEyN5vQ==\",\"salt\":\"3HCf9z5pc2SWV9cjUuS6PA==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":210000,\"algorithm\":\"pbkdf2-sha512\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-cyberbookingbaboon" ],
+    "notBefore" : 0,
+    "groups" : [ ]
+  } ]
+}
