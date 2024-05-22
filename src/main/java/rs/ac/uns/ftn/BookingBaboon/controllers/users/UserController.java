@@ -16,7 +16,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-import rs.ac.uns.ftn.BookingBaboon.config.security.JwtTokenUtil;
+//import rs.ac.uns.ftn.BookingBaboon.config.security.JwtTokenUtil;
 import rs.ac.uns.ftn.BookingBaboon.domain.notifications.NotificationType;
 import rs.ac.uns.ftn.BookingBaboon.domain.users.User;
 import rs.ac.uns.ftn.BookingBaboon.dtos.users.*;
@@ -38,8 +38,8 @@ public class UserController {
     private final IUserService service;
     private final IReservationService reservationService;
     private final ModelMapper mapper;
-    private final AuthenticationManager authenticationManager;
-    private final JwtTokenUtil jwtTokenUtil;
+//    private final AuthenticationManager authenticationManager;
+//    private final JwtTokenUtil jwtTokenUtil;
     private final SecurityContext sc = SecurityContextHolder.getContext();
 
 
@@ -115,26 +115,26 @@ public class UserController {
         return new ResponseEntity<>( mapper.map(user, UserResponse.class), HttpStatus.OK);
     }
 
-    @PostMapping({"/login"})
-    public ResponseEntity<UserResponse> login(@RequestBody UserLoginRequest request){
-        UsernamePasswordAuthenticationToken authReq = new UsernamePasswordAuthenticationToken(request.getEmail(),
-                request.getPassword());
-        Authentication auth = authenticationManager.authenticate(authReq);
-
-        sc.setAuthentication(auth);
-
-        User user = service.getByEmail(request.getEmail());
-
-        if (!user.isActive()){
-            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-        }
-
-        UserDetails userDetails = service.loadUserByUsername(user.getEmail());
-        String token = jwtTokenUtil.generateToken(userDetails, user.getId());
-        user.setJwt(token);
-
-        return new ResponseEntity<>( mapper.map(user, UserResponse.class), HttpStatus.OK);
-    }
+//    @PostMapping({"/login"})
+//    public ResponseEntity<UserResponse> login(@RequestBody UserLoginRequest request){
+//        UsernamePasswordAuthenticationToken authReq = new UsernamePasswordAuthenticationToken(request.getEmail(),
+//                request.getPassword());
+//        Authentication auth = authenticationManager.authenticate(authReq);
+//
+//        sc.setAuthentication(auth);
+//
+//        User user = service.getByEmail(request.getEmail());
+//
+//        if (!user.isActive()){
+//            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+//        }
+//
+//        UserDetails userDetails = service.loadUserByUsername(user.getEmail());
+//        String token = jwtTokenUtil.generateToken(userDetails, user.getId());
+//        user.setJwt(token);
+//
+//        return new ResponseEntity<>( mapper.map(user, UserResponse.class), HttpStatus.OK);
+//    }
 
     @PreAuthorize("hasAnyAuthority('GUEST', 'HOST', 'ADMIN', 'SYSADMIN')")
     @GetMapping("/logout")

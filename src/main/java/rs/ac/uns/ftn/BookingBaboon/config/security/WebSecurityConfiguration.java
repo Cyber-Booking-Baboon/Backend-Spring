@@ -58,8 +58,8 @@ import static org.springframework.security.config.annotation.web.builders.HttpSe
 //@EnableGlobalMethodSecurity(prePostEnabled = true)  // <-- Obavezno za @PreAuthorize
 public class WebSecurityConfiguration{
 
-    @Autowired
-    private JwtRequestFilter jwtRequestFilter;
+//    @Autowired
+//    private JwtRequestFilter jwtRequestFilter;
 
 
 //    @Autowired
@@ -115,6 +115,31 @@ public class WebSecurityConfiguration{
     }
 
 
+    //VERSION 3 BOUALI ALI
+//    @Bean
+//    public SecurityFilterChain keycloakFilterChain(HttpSecurity http) throws Exception {
+//        http
+//                .csrf(AbstractHttpConfigurer::disable)
+//                .authorizeHttpRequests(auth -> auth
+//                        .requestMatchers(new AntPathRequestMatcher("/*"))
+//                        .permitAll()
+//                        .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
+//                        .anyRequest()
+//                        .authenticated());
+//        http.oauth2ResourceServer(auth ->
+//                auth.jwt(token -> token.jwtAuthenticationConverter(new JwtAuthConverter())));
+//        http.sessionManagement(
+//                t -> t.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//        );
+//        http.oauth2ResourceServer(t-> {
+//            t.jwt(Customizer.withDefaults());
+//        });
+//        return http.build();
+//    }
+
+
+
+
 //    @Bean
 //    public DefaultMethodSecurityExpressionHandler msecurity() {
 //        DefaultMethodSecurityExpressionHandler defaultMethodSecurityExpressionHandler =
@@ -133,15 +158,15 @@ public class WebSecurityConfiguration{
 //        return c;
 //    }
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        PasswordEncoder encoder = new BCryptPasswordEncoder();// PasswordEncoderFactories.createDelegatingPasswordEncoder();
-        return encoder;
-    }
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        PasswordEncoder encoder = new BCryptPasswordEncoder();// PasswordEncoderFactories.createDelegatingPasswordEncoder();
+//        return encoder;
+//    }
 
-    @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
-            throws Exception {
-        return authenticationConfiguration.getAuthenticationManager();
-    }
+//    @Bean
+//    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
+//            throws Exception {
+//        return authenticationConfiguration.getAuthenticationManager();
+//    }
 }

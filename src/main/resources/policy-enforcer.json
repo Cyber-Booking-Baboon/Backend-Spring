@@ -16,6 +16,9 @@
     },{
       "path": "/api/v1/*",
       "enforcement-mode": "DISABLED"
+    },{
+      "path": "/*",
+      "enforcement-mode": "DISABLED"
     }
   ]
 }
