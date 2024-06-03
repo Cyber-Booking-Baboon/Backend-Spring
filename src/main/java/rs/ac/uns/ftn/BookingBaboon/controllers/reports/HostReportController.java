@@ -46,7 +46,6 @@ public class HostReportController {
     }
 
     // Create a new host report
-    @PreAuthorize("hasAuthority('GUEST')")
     @PostMapping({"/"})
     public ResponseEntity<HostReportResponse> create(@RequestBody HostReportCreateRequest hostReport) {
 
@@ -61,7 +60,6 @@ public class HostReportController {
     }
 
     // Delete a host report by ID
-    @PreAuthorize("hasAuthority('GUEST')")
     @DeleteMapping("/{hostReportId}")
     public ResponseEntity<HostReportResponse> remove(@PathVariable Long hostReportId) {
 

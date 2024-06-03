@@ -26,7 +26,6 @@ public class AccommodationModificationController {
     private final IAccommodationModificationService service;
     private final ModelMapper mapper;
 
-    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping
     public ResponseEntity<Collection<AccommodationModificationResponse>> getAll() {
         Collection<AccommodationModificationResponse> response = service.getAll().stream()
@@ -34,7 +33,6 @@ public class AccommodationModificationController {
                 .collect(Collectors.toList());
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/{id}")
     public ResponseEntity<AccommodationModificationResponse> get(@PathVariable Long id) {
         AccommodationModificationResponse result = mapper.map(service.get(id), AccommodationModificationResponse.class);
@@ -46,7 +44,6 @@ public class AccommodationModificationController {
         return new ResponseEntity<>(result,  HttpStatus.OK) ;
     }
 
-    @PreAuthorize("hasAuthority('HOST')")
     @PostMapping
     public ResponseEntity<AccommodationModificationResponse> create(@RequestBody AccommodationModificationCreateRequest request) {
         AccommodationModification result = service.create(mapper.map(request, AccommodationModification.class));
@@ -63,7 +60,6 @@ public class AccommodationModificationController {
 
         return new ResponseEntity<>(mapper.map(result, AccommodationModificationResponse.class), HttpStatus.OK);
     }
-    @PreAuthorize("hasAuthority('ADMIN')")
     @PutMapping("/approve/{id}")
     public ResponseEntity<AccommodationModificationResponse> approve(@PathVariable Long id) {
         AccommodationModification accommodationModification = service.get(id);
@@ -75,7 +71,6 @@ public class AccommodationModificationController {
         accommodationModification = service.approve(id);
         return new ResponseEntity<>(mapper.map(accommodationModification, AccommodationModificationResponse.class), HttpStatus.OK);
     }
-    @PreAuthorize("hasAuthority('ADMIN')")
     @PutMapping("/deny/{id}")
     public ResponseEntity<AccommodationModificationResponse> deny(@PathVariable Long id) {
         AccommodationModification accommodationModification = service.get(id);

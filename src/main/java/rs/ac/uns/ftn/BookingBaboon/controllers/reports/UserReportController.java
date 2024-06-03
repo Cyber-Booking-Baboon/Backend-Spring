@@ -24,7 +24,6 @@ public class UserReportController {
     private final IUserReportService service;
     private final ModelMapper mapper;
 
-    @PreAuthorize("hasAuthority('ADMIN')")
 
     @GetMapping
     public ResponseEntity<Collection<Report>> getUserReports() {

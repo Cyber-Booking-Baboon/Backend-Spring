@@ -52,7 +52,6 @@ public class GuestReportController {
     }
 
     // Create a new guest report
-    @PreAuthorize("hasAuthority('HOST')")
     @PostMapping({"/"})
     public ResponseEntity<GuestReportResponse> create(@RequestBody GuestReportCreateRequest guestReport) {
 
@@ -67,7 +66,6 @@ public class GuestReportController {
     }
 
     // Delete a guest report by ID
-    @PreAuthorize("hasAuthority('HOST')")
     @DeleteMapping("/{guestReportId}")
     public ResponseEntity<GuestReportResponse> remove(@PathVariable Long guestReportId) {
 

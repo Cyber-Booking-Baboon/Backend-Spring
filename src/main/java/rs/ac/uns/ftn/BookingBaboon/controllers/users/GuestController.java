@@ -82,7 +82,6 @@ public class GuestController {
         return new ResponseEntity<>( mapper.map(guest, GuestProfile.class), HttpStatus.OK);
     }
 
-    @PreAuthorize("hasAnyAuthority('GUEST')")
     @GetMapping({"{guestId}/favorite-accommodations"})
     public ResponseEntity<Collection<AccommodationResponse>> getFavorites(@PathVariable Long guestId){
         Collection<Accommodation> accommodations = service.getFavorites(guestId);
@@ -94,14 +93,12 @@ public class GuestController {
         return new ResponseEntity<>(accommodationResponses,HttpStatus.OK);
     }
 
-    @PreAuthorize("hasAnyAuthority('GUEST')")
     @PutMapping({"{guestId}/favorite-accommodations/add/{accommodationId}"})
     public ResponseEntity<GuestResponse> addFavorite(@PathVariable Long guestId, @PathVariable Long accommodationId){
         Guest result = service.addFavorite(guestId,accommodationId);
         return new ResponseEntity<>(mapper.map(result,GuestResponse.class),HttpStatus.OK);
     }
 
-    @PreAuthorize("hasAnyAuthority('GUEST')")
     @PutMapping({"{guestId}/favorite-accommodations/remove/{accommodationId}"})
     public ResponseEntity<GuestResponse> removeFavorite(@PathVariable Long guestId, @PathVariable Long accommodationId){
         Guest result = service.removeFavorite(guestId,accommodationId);

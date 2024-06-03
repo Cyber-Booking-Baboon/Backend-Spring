@@ -49,7 +49,6 @@ public class HostReviewController {
     }
 
     // Create a new host review
-    @PreAuthorize("hasAuthority('GUEST')")
     @PostMapping({"/"})
     public ResponseEntity<HostReviewResponse> create(@RequestBody HostReviewCreateRequest hostReview) {
 
@@ -64,7 +63,6 @@ public class HostReviewController {
     }
 
     // Delete a host review by ID
-    @PreAuthorize("hasAnyAuthority('GUEST', 'ADMIN')")
     @DeleteMapping("/{hostReviewId}")
     public ResponseEntity<HostReviewResponse> remove(@PathVariable Long hostReviewId) {
 

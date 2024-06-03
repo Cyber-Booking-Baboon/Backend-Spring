@@ -52,7 +52,6 @@ public class AccommodationReviewController {
     }
 
     // Create a new accommodation report
-    @PreAuthorize("hasAuthority('GUEST')")
     @PostMapping({"/"})
     public ResponseEntity<AccommodationReviewResponse> create(@RequestBody AccommodationReviewCreateRequest accommodationReview) {
 
@@ -67,7 +66,6 @@ public class AccommodationReviewController {
     }
 
     // Delete a accommodation report by ID
-    @PreAuthorize("hasAnyAuthority('GUEST', 'ADMIN')")
     @DeleteMapping("/{accommodationReviewId}")
     public ResponseEntity<AccommodationReviewResponse> remove(@PathVariable Long accommodationReviewId) {
 

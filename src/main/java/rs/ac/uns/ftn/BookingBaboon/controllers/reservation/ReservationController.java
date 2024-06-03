@@ -46,7 +46,6 @@ public class ReservationController {
         return new ResponseEntity<>(mapper.map(reservation, ReservationResponse.class), HttpStatus.OK);
     }
 
-    @PreAuthorize("hasAuthority('GUEST')")
     @PostMapping
     public ResponseEntity<ReservationResponse> create(@RequestBody ReservationCreateRequest reservation) {
         reservation.getTimeSlot().fix();
@@ -130,14 +129,12 @@ public class ReservationController {
                 .collect(Collectors.toList()), HttpStatus.OK);
     }
 
-    @PreAuthorize("hasAuthority('HOST')")
     @GetMapping("/cancellation-count/{userId}")
     public ResponseEntity<Integer> getCancellationCountForUser(@PathVariable Long userId) {
         int cancellationCount = service.getCancellationCountForUser(userId);
         return new ResponseEntity<>(cancellationCount, HttpStatus.OK);
     }
 
-    @PreAuthorize("hasAuthority('GUEST')")
     @GetMapping("/guest/{id}")
     public ResponseEntity<Collection<ReservationResponse>> getAllForGuest(@PathVariable Long id) {
         Collection<Reservation> reservations = service.getAllForGuest(id);
@@ -146,7 +143,6 @@ public class ReservationController {
                 .collect(Collectors.toList()), HttpStatus.OK);
     }
 
-    @PreAuthorize("hasAuthority('HOST')")
     @GetMapping("/host/{id}")
     public ResponseEntity<Collection<ReservationResponse>> getAllForHost(@PathVariable Long id) {
         Collection<Reservation> reservations = service.getAllForHost(id);
@@ -154,7 +150,6 @@ public class ReservationController {
                 .map(reservation -> mapper.map(reservation, ReservationResponse.class))
                 .collect(Collectors.toList()), HttpStatus.OK);
     }
-    @PreAuthorize("hasAuthority('ADMIN')")
     @PutMapping("/cancelAllForGuest/{guestId}")
     public ResponseEntity<Collection<ReservationResponse>> cancelAllForGuest(@PathVariable Long guestId) {
         Collection<Reservation> reservations = service.cancelAllForGuest(guestId);

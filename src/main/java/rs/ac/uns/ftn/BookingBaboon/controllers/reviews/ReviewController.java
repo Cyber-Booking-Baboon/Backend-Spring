@@ -25,7 +25,6 @@ public class ReviewController {
     private final IReviewService service;
     private final ModelMapper mapper;
 
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
     @DeleteMapping("/{ReviewId}")
     public ResponseEntity<ReviewReferenceRequest> remove(@PathVariable Long ReviewId) {
 

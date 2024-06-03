@@ -34,14 +34,12 @@ public class SummaryController {
     private final ISummaryService service;
     private final TemplateEngine templateEngine;
 
-    @PreAuthorize("hasAnyAuthority('HOST')")
     @GetMapping("/monthly/{accommodationId}")
     public ResponseEntity<AccommodationMonthlySummary> getMonthlySummary(@PathVariable Long accommodationId) {
         AccommodationMonthlySummary monthlySummary = service.getMonthlySummary(accommodationId);
         return new ResponseEntity<>(monthlySummary, HttpStatus.OK);
     }
 
-    @PreAuthorize("hasAnyAuthority('HOST')")
     @GetMapping("/period")
     public ResponseEntity<PeriodSummary> getPeriodSummary(
             @RequestParam(name = "host-id") Long hostId,
@@ -51,7 +49,6 @@ public class SummaryController {
         return new ResponseEntity<>(periodSummary, HttpStatus.OK);
     }
 
-    @PreAuthorize("hasAnyAuthority('HOST')")
     @GetMapping("/period/pdf")
     @ResponseBody
     public ResponseEntity<byte[]> getPeriodSummaryPdf(
@@ -76,7 +73,6 @@ public class SummaryController {
         return new ResponseEntity<>(outputStream.toByteArray(), HttpStatus.OK);
     }
 
-    @PreAuthorize("hasAnyAuthority('HOST')")
     @GetMapping("/monthly/{accommodationId}/pdf")
     public ResponseEntity<byte[]> getMonthlySummaryPdf(@PathVariable Long accommodationId) throws IOException {
 
