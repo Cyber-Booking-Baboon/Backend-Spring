@@ -1445,10 +1445,12 @@
           "providerId" : "user-attribute-ldap-mapper",
           "subComponents" : { },
           "config" : {
-            "ldap.attribute" : [ "mail" ],
+            "ldap.attribute" : [ "uid" ],
             "is.mandatory.in.ldap" : [ "false" ],
-            "read.only" : [ "true" ],
+            "attribute.force.default" : [ "true" ],
+            "is.binary.attribute" : [ "false" ],
             "always.read.value.from.ldap" : [ "false" ],
+            "read.only" : [ "true" ],
             "user.model.attribute" : [ "email" ]
           }
         }, {
@@ -1481,24 +1483,24 @@
         } ]
       },
       "config" : {
-        "pagination" : [ "false" ],
         "fullSyncPeriod" : [ "-1" ],
+        "pagination" : [ "false" ],
         "startTls" : [ "false" ],
-        "usersDn" : [ "ou=users,dc=example,dc=com" ],
         "connectionPooling" : [ "false" ],
+        "usersDn" : [ "ou=users,dc=example,dc=com" ],
         "cachePolicy" : [ "DEFAULT" ],
         "useKerberosForPasswordAuthentication" : [ "false" ],
         "importEnabled" : [ "true" ],
         "enabled" : [ "true" ],
-        "usernameLDAPAttribute" : [ "uid" ],
-        "bindCredential" : [ "secret" ],
-        "bindDn" : [ "uid=admin,ou=system" ],
         "changedSyncPeriod" : [ "-1" ],
-        "lastSync" : [ "1717678807" ],
+        "usernameLDAPAttribute" : [ "uid" ],
+        "bindDn" : [ "uid=admin,ou=system" ],
+        "bindCredential" : [ "secret" ],
+        "lastSync" : [ "1717681101" ],
         "vendor" : [ "ad" ],
         "uuidLDAPAttribute" : [ "entryUUID" ],
-        "allowKerberosAuthentication" : [ "false" ],
         "connectionUrl" : [ "ldap://localhost:10389" ],
+        "allowKerberosAuthentication" : [ "false" ],
         "syncRegistrations" : [ "true" ],
         "authType" : [ "simple" ],
         "krbPrincipalAttribute" : [ "userPrincipalName" ],
@@ -2028,7 +2030,7 @@
     "name" : "Configure OTP",
     "providerId" : "CONFIGURE_TOTP",
     "enabled" : true,
-    "defaultAction" : false,
+    "defaultAction" : true,
     "priority" : 10,
     "config" : { }
   }, {
