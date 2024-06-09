@@ -1,7 +1,9 @@
 package rs.ac.uns.ftn.BookingBaboon.controllers.users;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -9,21 +11,29 @@ import org.springframework.web.bind.annotation.*;
 import rs.ac.uns.ftn.BookingBaboon.domain.accommodation_handling.Accommodation;
 import rs.ac.uns.ftn.BookingBaboon.domain.notifications.NotificationType;
 import rs.ac.uns.ftn.BookingBaboon.domain.users.Guest;
+import rs.ac.uns.ftn.BookingBaboon.domain.users.Host;
 import rs.ac.uns.ftn.BookingBaboon.dtos.accommodation_handling.accommodation.AccommodationResponse;
 import rs.ac.uns.ftn.BookingBaboon.dtos.users.guests.*;
+import rs.ac.uns.ftn.BookingBaboon.dtos.users.hosts.HostResponse;
 import rs.ac.uns.ftn.BookingBaboon.services.users.interfaces.IGuestService;
+import rs.ac.uns.ftn.BookingBaboon.services.users.ldap.LdapUserService;
 
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @CrossOrigin
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("api/v1/guests")
+@SecurityRequirement(name = "Keycloak")
 public class GuestController {
     private final IGuestService service;
     private final ModelMapper mapper;
 
+    @Autowired
+    private LdapUserService ldapUserService;
     @GetMapping
     public ResponseEntity<Collection<GuestResponse>> getGuests() {
         Collection<Guest> guests = service.getAll();
@@ -44,7 +54,9 @@ public class GuestController {
 
     @PostMapping({"/"})
     public ResponseEntity<GuestResponse> create(@RequestBody GuestCreateRequest guest) {
-        return new ResponseEntity<>(mapper.map(service.create(mapper.map(guest, Guest.class)),GuestResponse.class), HttpStatus.CREATED);
+        Guest result = service.create(mapper.map(guest, Guest.class));
+        ldapUserService.createUser(result.getId().toString(), result.getEmail(), guest.getPassword(), result.getFirstName(), result.getLastName(), "guest");
+        return new ResponseEntity<>(mapper.map(result,GuestResponse.class), HttpStatus.CREATED);
     }
 
     @PutMapping({"/"})
@@ -70,7 +82,6 @@ public class GuestController {
         return new ResponseEntity<>( mapper.map(guest, GuestProfile.class), HttpStatus.OK);
     }
 
-    @PreAuthorize("hasAnyAuthority('GUEST')")
     @GetMapping({"{guestId}/favorite-accommodations"})
     public ResponseEntity<Collection<AccommodationResponse>> getFavorites(@PathVariable Long guestId){
         Collection<Accommodation> accommodations = service.getFavorites(guestId);
@@ -82,14 +93,12 @@ public class GuestController {
         return new ResponseEntity<>(accommodationResponses,HttpStatus.OK);
     }
 
-    @PreAuthorize("hasAnyAuthority('GUEST')")
     @PutMapping({"{guestId}/favorite-accommodations/add/{accommodationId}"})
     public ResponseEntity<GuestResponse> addFavorite(@PathVariable Long guestId, @PathVariable Long accommodationId){
         Guest result = service.addFavorite(guestId,accommodationId);
         return new ResponseEntity<>(mapper.map(result,GuestResponse.class),HttpStatus.OK);
     }
 
-    @PreAuthorize("hasAnyAuthority('GUEST')")
     @PutMapping({"{guestId}/favorite-accommodations/remove/{accommodationId}"})
     public ResponseEntity<GuestResponse> removeFavorite(@PathVariable Long guestId, @PathVariable Long accommodationId){
         Guest result = service.removeFavorite(guestId,accommodationId);

@@ -12,7 +12,7 @@ import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
-import rs.ac.uns.ftn.BookingBaboon.config.security.JwtTokenUtil;
+//import rs.ac.uns.ftn.BookingBaboon.config.security.JwtTokenUtil;
 import rs.ac.uns.ftn.BookingBaboon.domain.certificates.CertificateRequest;
 import rs.ac.uns.ftn.BookingBaboon.dtos.certificates.CertificateCreateDTO;
 import rs.ac.uns.ftn.BookingBaboon.dtos.certificates.CertificateResponseDTO;
@@ -27,7 +27,7 @@ import java.util.*;
 public class CertificateRequestService implements ICertificateRequestService {
     private final ICertificateRequestRepository repository;
     private final RestTemplate restTemplate;
-    private final JwtTokenUtil tokenUtil;
+//    private final JwtTokenUtil tokenUtil;
     private final UserService userService;
     ResourceBundle bundle = ResourceBundle.getBundle("ValidationMessages", LocaleContextHolder.getLocale());
 
@@ -139,12 +139,9 @@ public class CertificateRequestService implements ICertificateRequestService {
     @Override
     public ResponseEntity<String> getPrivateKey(String alias, Long id, String authorizationHeader) {
         if(authorizationHeader == null) throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Not authorized");
-        String userId = userService.getByEmail(tokenUtil.getUsernameFromToken(authorizationHeader.substring(7))).getId().toString();
-        if(!userId.equals(id.toString())) throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Not authorized");
+//        String userId = userService.getByEmail(tokenUtil.getUsernameFromToken(authorizationHeader.substring(7))).getId().toString();
+//        if(!userId.equals(id.toString())) throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Not authorized");
         return sendPrivateKeyRequest(alias, id);
-
-
-
     }
 
     @Override

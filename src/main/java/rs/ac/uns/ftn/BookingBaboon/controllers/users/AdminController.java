@@ -1,13 +1,16 @@
 package rs.ac.uns.ftn.BookingBaboon.controllers.users;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rs.ac.uns.ftn.BookingBaboon.domain.accommodation_handling.AccommodationModification;
 import rs.ac.uns.ftn.BookingBaboon.domain.reports.GuestReport;
 import rs.ac.uns.ftn.BookingBaboon.domain.users.Admin;
+import rs.ac.uns.ftn.BookingBaboon.domain.users.Host;
 import rs.ac.uns.ftn.BookingBaboon.domain.users.User;
 import rs.ac.uns.ftn.BookingBaboon.dtos.accommodation_handling.accommodation.AccommodationResponse;
 import rs.ac.uns.ftn.BookingBaboon.dtos.reports.GuestReportResponse;
@@ -15,7 +18,9 @@ import rs.ac.uns.ftn.BookingBaboon.dtos.users.admins.UserBlockResponse;
 import rs.ac.uns.ftn.BookingBaboon.dtos.users.admins.AdminRequest;
 import rs.ac.uns.ftn.BookingBaboon.dtos.users.admins.*;
 import rs.ac.uns.ftn.BookingBaboon.dtos.users.admins.AdminResponse;
+import rs.ac.uns.ftn.BookingBaboon.dtos.users.hosts.HostResponse;
 import rs.ac.uns.ftn.BookingBaboon.services.users.interfaces.IAdminService;
+import rs.ac.uns.ftn.BookingBaboon.services.users.ldap.LdapUserService;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -24,10 +29,13 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("api/v1/admin")
+@SecurityRequirement(name = "Keycloak")
 public class AdminController {
     private final IAdminService service;
     private final ModelMapper mapper;
 
+    @Autowired
+    private LdapUserService ldapUserService;
     @GetMapping
     public ResponseEntity<Collection<AdminResponse>> getAdmins() {
         Collection<Admin> admins = service.getAll();
@@ -48,7 +56,9 @@ public class AdminController {
 
     @PostMapping({"/"})
     public ResponseEntity<AdminResponse> create(@RequestBody AdminCreateRequest admin) {
-        return new ResponseEntity<>(mapper.map(service.create(mapper.map(admin, Admin.class)),AdminResponse.class), HttpStatus.CREATED);
+        Admin result = service.create(mapper.map(admin, Admin.class));
+        ldapUserService.createUser(result.getId().toString(), result.getEmail(), admin.getPassword(), result.getFirstName(), result.getLastName(), "admin");
+        return new ResponseEntity<>(mapper.map(result, AdminResponse.class), HttpStatus.CREATED);
     }
 
     @PutMapping({"/"})

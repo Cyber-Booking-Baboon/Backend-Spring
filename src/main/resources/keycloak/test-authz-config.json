@@ -1,0 +1,1229 @@
+{
+  "allowRemoteResourceManagement": true,
+  "policyEnforcementMode": "ENFORCING",
+  "resources": [
+    {
+      "name": "Default Resource",
+      "ownerManagedAccess": false,
+      "displayName": "",
+      "attributes": {},
+      "_id": "fd74cf1a-b283-4247-8f51-cb911ee36425",
+      "uris": [
+        "/*"
+      ],
+      "icon_uri": ""
+    },
+    {
+      "name": "Amenities",
+      "ownerManagedAccess": false,
+      "displayName": "",
+      "attributes": {},
+      "_id": "a6733a51-a3e9-4693-b636-9587a3f42f82",
+      "uris": [
+        "/api/v1/amenities"
+      ],
+      "scopes": [
+        {
+          "name": "DELETE"
+        },
+        {
+          "name": "GET"
+        },
+        {
+          "name": "POST"
+        },
+        {
+          "name": "PUT"
+        }
+      ],
+      "icon_uri": ""
+    },
+    {
+      "name": "Accommodations Resource",
+      "ownerManagedAccess": false,
+      "displayName": "",
+      "attributes": {},
+      "_id": "bec07f82-48dc-49f2-a999-db02a0c7958e",
+      "uris": [
+        "/api/v1/accommodations"
+      ],
+      "scopes": [
+        {
+          "name": "GET"
+        },
+        {
+          "name": "POST"
+        },
+        {
+          "name": "PUT"
+        }
+      ],
+      "icon_uri": ""
+    },
+    {
+      "name": "Accommodation Resource",
+      "ownerManagedAccess": false,
+      "displayName": "",
+      "attributes": {},
+      "_id": "e672e6de-6a50-4440-a5cb-702b817bf81a",
+      "uris": [
+        "/api/v1/accommodations/{id}"
+      ],
+      "scopes": [
+        {
+          "name": "DELETE"
+        },
+        {
+          "name": "GET"
+        }
+      ],
+      "icon_uri": ""
+    },
+    {
+      "name": "Accommodations Host Resource",
+      "ownerManagedAccess": false,
+      "displayName": "",
+      "attributes": {},
+      "_id": "41bc9e86-fb23-4e16-8e3c-59dc31bd60ba",
+      "uris": [
+        "/api/v1/accommodations/host/{hostId}"
+      ],
+      "scopes": [
+        {
+          "name": "GET"
+        }
+      ],
+      "icon_uri": ""
+    },
+    {
+      "name": "Accommodation Available Period Resource",
+      "ownerManagedAccess": false,
+      "displayName": "",
+      "attributes": {},
+      "_id": "aeb2bf69-2069-40b5-8645-d9d1311f571e",
+      "uris": [
+        "/api/v1/accommodations/{accommodationId}/available-periods/{periodId}"
+      ],
+      "scopes": [
+        {
+          "name": "DELETE"
+        }
+      ],
+      "icon_uri": ""
+    },
+    {
+      "name": "Accommodation Add Image Resource",
+      "ownerManagedAccess": false,
+      "displayName": "",
+      "attributes": {},
+      "_id": "ec0b6594-76b0-4318-9bc4-2eaf04adfb86",
+      "uris": [
+        "/api/v1/accommodations/{accommodationId}/add/{imageId}"
+      ],
+      "scopes": [
+        {
+          "name": "PUT"
+        }
+      ],
+      "icon_uri": ""
+    },
+    {
+      "name": "Accommodation Add Period Resource",
+      "ownerManagedAccess": false,
+      "displayName": "",
+      "attributes": {},
+      "_id": "5a07fd98-1f85-4ffe-9959-8feebc56e993",
+      "uris": [
+        "/api/v1/accommodations/{accommodationId}/addPeriod/{periodId}"
+      ],
+      "scopes": [
+        {
+          "name": "PUT"
+        }
+      ],
+      "icon_uri": ""
+    },
+    {
+      "name": "Accommodation Update Editing Status Resource",
+      "ownerManagedAccess": false,
+      "displayName": "",
+      "attributes": {},
+      "_id": "a54aa3bd-a162-4a68-b2e4-ab6aff85bf01",
+      "uris": [
+        "/api/v1/accommodations/{accommodationId}/updateEditingStatus/{isBeingEdited}"
+      ],
+      "scopes": [
+        {
+          "name": "PUT"
+        }
+      ],
+      "icon_uri": ""
+    },
+    {
+      "name": "Accommodation Update Auto Accept Resource",
+      "ownerManagedAccess": false,
+      "displayName": "",
+      "attributes": {},
+      "_id": "eb6d7f9e-cc5d-4802-8dc5-4238fcf45738",
+      "uris": [
+        " /api/v1/accommodations/{accommodationId}/update-auto-accept/{isAutomaticallyAccepted}"
+      ],
+      "scopes": [
+        {
+          "name": "PUT"
+        }
+      ],
+      "icon_uri": ""
+    },
+    {
+      "name": "Accommodation Cancellation Deadline Resource",
+      "ownerManagedAccess": false,
+      "displayName": "",
+      "attributes": {},
+      "_id": "57ca0174-ff4b-471c-9540-baea1d46f74e",
+      "uris": [
+        "/api/v1/accommodations/{accommodationId}/cancellation-deadline/{value}"
+      ],
+      "scopes": [
+        {
+          "name": "PUT"
+        }
+      ],
+      "icon_uri": ""
+    },
+    {
+      "name": "Summary Resource",
+      "ownerManagedAccess": false,
+      "displayName": "",
+      "attributes": {},
+      "_id": "1e42360c-c763-4951-aaa9-e052f8ea8a9c",
+      "uris": [
+        "/api/v1/summary/monthly/{accommodationId}/pdf",
+        "/api/v1/summary/monthly/{accommodationId}",
+        "/api/v1/summary-period-pdf",
+        "/api/v1/summary/period"
+      ],
+      "scopes": [
+        {
+          "name": "GET"
+        }
+      ],
+      "icon_uri": ""
+    },
+    {
+      "name": "Available Periods Resource",
+      "ownerManagedAccess": false,
+      "displayName": "",
+      "attributes": {},
+      "_id": "490106b5-f6be-40e5-a443-36f35401bf18",
+      "uris": [
+        "/api/v1/available-periods"
+      ],
+      "scopes": [
+        {
+          "name": "GET"
+        },
+        {
+          "name": "POST"
+        },
+        {
+          "name": "PUT"
+        }
+      ],
+      "icon_uri": ""
+    },
+    {
+      "name": "Available Period Resource",
+      "ownerManagedAccess": false,
+      "displayName": "",
+      "attributes": {},
+      "_id": "d45eb031-ca6e-46a9-bf1e-f5872c8cfd01",
+      "uris": [
+        "/api/v1/available-periods/{id}"
+      ],
+      "scopes": [
+        {
+          "name": "DELETE"
+        }
+      ],
+      "icon_uri": ""
+    },
+    {
+      "name": "Notifications Resource",
+      "ownerManagedAccess": false,
+      "displayName": "",
+      "attributes": {},
+      "_id": "d87e7842-5f44-400b-8b86-71a6d1f89c72",
+      "uris": [
+        "/api/v1/notifications"
+      ],
+      "scopes": [
+        {
+          "name": "POST"
+        },
+        {
+          "name": "PUT"
+        }
+      ],
+      "icon_uri": ""
+    },
+    {
+      "name": "Notification Resource",
+      "ownerManagedAccess": false,
+      "displayName": "",
+      "attributes": {},
+      "_id": "9a13c8ea-fc5b-4579-ac9c-dd4c42a5d237",
+      "uris": [
+        "/api/v1/notifications/{notificationId}",
+        "/api/v1/notifications/{notificationId}/read"
+      ],
+      "scopes": [
+        {
+          "name": "DELETE"
+        },
+        {
+          "name": "PUT"
+        }
+      ],
+      "icon_uri": ""
+    },
+    {
+      "name": "Guest Reports Resource",
+      "ownerManagedAccess": false,
+      "displayName": "",
+      "attributes": {},
+      "_id": "d20be878-3191-4001-8248-b7f2394b6f84",
+      "uris": [
+        "api/v1/guest-reports"
+      ],
+      "scopes": [
+        {
+          "name": "GET"
+        },
+        {
+          "name": "POST"
+        },
+        {
+          "name": "PUT"
+        }
+      ],
+      "icon_uri": ""
+    },
+    {
+      "name": "Guest Report Policy",
+      "ownerManagedAccess": false,
+      "displayName": "",
+      "attributes": {},
+      "_id": "7187cbe3-64cb-4f6c-9c8a-473be8d3dc33",
+      "uris": [
+        "api/v1/guest-reports/{guestReportId}"
+      ],
+      "scopes": [
+        {
+          "name": "DELETE"
+        }
+      ],
+      "icon_uri": ""
+    },
+    {
+      "name": "Host Reports Resource",
+      "ownerManagedAccess": false,
+      "displayName": "",
+      "attributes": {},
+      "_id": "8ed49285-5097-4af1-b8b3-941fcbe3f0a1",
+      "uris": [
+        "api/v1/host-reports"
+      ],
+      "scopes": [
+        {
+          "name": "GET"
+        },
+        {
+          "name": "POST"
+        },
+        {
+          "name": "PUT"
+        }
+      ],
+      "icon_uri": ""
+    },
+    {
+      "name": "Host Report Resource",
+      "ownerManagedAccess": false,
+      "displayName": "",
+      "attributes": {},
+      "_id": "0086bdb5-7531-4fef-87d3-676f88511ad1",
+      "uris": [
+        "api/v1/host-reports/{hostReportId}"
+      ],
+      "scopes": [
+        {
+          "name": "DELETE"
+        }
+      ],
+      "icon_uri": ""
+    },
+    {
+      "name": "Review Reports Resource",
+      "ownerManagedAccess": false,
+      "displayName": "",
+      "attributes": {},
+      "_id": "cf003c7c-8354-4315-b66f-49bffdc3309f",
+      "uris": [
+        "api/v1/review-reports"
+      ],
+      "scopes": [
+        {
+          "name": "GET"
+        },
+        {
+          "name": "POST"
+        },
+        {
+          "name": "PUT"
+        }
+      ],
+      "icon_uri": ""
+    },
+    {
+      "name": "Review Report Resource",
+      "ownerManagedAccess": false,
+      "displayName": "",
+      "attributes": {},
+      "_id": "d1ad95de-7d03-41d3-b359-4bb2557afbdc",
+      "uris": [
+        "api/v1/review-reports/{reviewReportId}"
+      ],
+      "scopes": [
+        {
+          "name": "DELETE"
+        },
+        {
+          "name": "GET"
+        }
+      ],
+      "icon_uri": ""
+    },
+    {
+      "name": "User Reports Resource",
+      "ownerManagedAccess": false,
+      "displayName": "",
+      "attributes": {},
+      "_id": "8fa0ed92-9efb-47bc-b6b6-dd4e1f2e6847",
+      "uris": [
+        "api/v1/user-reports"
+      ],
+      "scopes": [
+        {
+          "name": "GET"
+        }
+      ],
+      "icon_uri": ""
+    }
+  ],
+  "policies": [
+    {
+      "id": "812861e9-54b6-4658-8cc3-511f8dc3e49d",
+      "name": "Default Policy",
+      "description": "",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"default-roles-cyberbookingbaboon\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "08b3c604-158b-4d22-acc0-d16b1f8e576d",
+      "name": "Amenities Policy",
+      "description": "",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"admin\",\"required\":false},{\"id\":\"guest\",\"required\":false},{\"id\":\"host\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "92f8a047-6fba-401f-b176-5cd4424c2dce",
+      "name": "Post Accommodations Policy",
+      "description": "",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"host\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "1f5d3b7f-30d3-41bb-be4d-d15880e4730f",
+      "name": "Put Accommodations Policy",
+      "description": "",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"admin\",\"required\":false},{\"id\":\"host\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "11dbb535-0903-4470-b94f-850a84dd4dcf",
+      "name": "Delete Accommodation Policy",
+      "description": "",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"host\",\"required\":false},{\"id\":\"admin\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "030d3a39-d06f-4d0b-a8fa-b7b64d3818d2",
+      "name": "Get Accommodations Host Policy",
+      "description": "",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"host\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "4cb90a6d-3a60-4465-be1a-67449b684939",
+      "name": "Delete Accommodation Available Periods Policy",
+      "description": "",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"host\",\"required\":false},{\"id\":\"admin\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "898c97f9-96db-4ff8-bad6-0d2ce367448b",
+      "name": "Accommodation Add Image Policy",
+      "description": "",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"host\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "3acc2dcd-6768-4d0a-8736-b1dbb04cb73f",
+      "name": "Accommodation Add Period Policy",
+      "description": "",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"host\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "12f992ee-f91a-4317-b83e-cf0c4c1a4c87",
+      "name": "Accommodation Update Editing Status Policy",
+      "description": "",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"admin\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "1b73312e-c3ad-46c5-8024-5f1ec0cbb03d",
+      "name": "Put Accommodation Update Auto Accept Policy",
+      "description": "",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"host\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "77fed6c9-29b6-44bc-8420-742bd404f105",
+      "name": "Put Accommodation Cancellation Deadline Policy",
+      "description": "",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"host\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "1c7c8b1d-dd96-442c-bdeb-324af657c0de",
+      "name": "Summary Policy",
+      "description": "",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"host\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "c8e0118c-3539-4f8c-8cff-724e697c8faa",
+      "name": "Get Available Periods Policy",
+      "description": "",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"admin\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "52513d51-036d-4ce1-bba3-1afeebd4069f",
+      "name": "Post Available Periods Policy",
+      "description": "",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"host\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "2ff374ff-2671-4edc-b24c-7aa1cdebfbec",
+      "name": "Put Available Periods Policy",
+      "description": "",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"host\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "3a82fbe3-ff47-445b-9d70-882d52bc3b9c",
+      "name": "Delete Available Period Policy",
+      "description": "",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"host\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "8d870786-a0c5-446c-8d5a-6d7043bd7d45",
+      "name": "Notifications Policy",
+      "description": "",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"admin\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "bf6b6389-d769-4328-aa92-09921f1cfb71",
+      "name": "Notification Policy",
+      "description": "",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"admin\",\"required\":false},{\"id\":\"host\",\"required\":false},{\"id\":\"guest\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "5c9c20cb-64e5-49f5-a83a-c313dc05f60a",
+      "name": "Get Guest Reports Policy",
+      "description": "",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"admin\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "1d678c2e-a269-44fa-9d70-1e5e93b0417a",
+      "name": "Post Guest Reports Policy",
+      "description": "",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"host\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "9491ae35-63be-4bc9-bfa9-339f628d81a8",
+      "name": "Put Guest Reports Policy",
+      "description": "",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"host\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "dbd60ad0-2c40-4a12-9011-b4de98a0d934",
+      "name": "Delete Guest Report Policy",
+      "description": "",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"host\",\"required\":false},{\"id\":\"admin\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "bea192e9-97cb-49f9-8336-17b7d181e251",
+      "name": "Get Host Reports Policy",
+      "description": "",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"admin\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "c89eeb49-f623-40cc-825b-ca0b2e4bcf16",
+      "name": "Post Host Reports Policy",
+      "description": "",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"guest\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "98cdc24a-4dde-4995-88b9-2ae7812df823",
+      "name": "Put Host Reports Policy",
+      "description": "",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"guest\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "0a3a3a01-cffb-478b-bd2b-c1a324ea0471",
+      "name": "Delete Host Report Policy",
+      "description": "",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"guest\",\"required\":false},{\"id\":\"admin\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "24581e61-d488-44fe-bd9a-be298edb2913",
+      "name": "Get Review Reports Policy",
+      "description": "",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"admin\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "7bfec7eb-8b4e-4ece-b92a-3d32d78ef05e",
+      "name": "Post Review Reports Policy",
+      "description": "",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"host\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "a5d2dfd4-c159-4166-bc5d-0b5dde87b464",
+      "name": "Put Review Reports Policy",
+      "description": "",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"host\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "6d7edfcb-f525-4501-a7fc-97dc434a3e16",
+      "name": "Get Review Report Policy",
+      "description": "",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"admin\",\"required\":false},{\"id\":\"host\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "89f47df0-c459-4804-a347-9dea58d8e7a6",
+      "name": "Delete Review Report Policy",
+      "description": "",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"admin\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "05220da9-e06b-40ed-abe6-bc987343dd33",
+      "name": "Get User Reports Policy",
+      "description": "",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"admin\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "bdcdb612-e207-4688-8a5b-aaf6ce37b496",
+      "name": "Default Permission",
+      "description": "",
+      "type": "resource",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"Default Resource\"]",
+        "applyPolicies": "[\"Default Policy\"]"
+      }
+    },
+    {
+      "id": "0a140047-8069-4a17-b686-f962e3386583",
+      "name": "Amenities permission",
+      "description": "",
+      "type": "resource",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"Amenities\"]",
+        "applyPolicies": "[\"Amenities Policy\"]"
+      }
+    },
+    {
+      "id": "6bed9467-3529-4fc3-be03-c67bf64fdaf6",
+      "name": "Post Accommodations Permission",
+      "description": "",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"Accommodations Resource\"]",
+        "scopes": "[\"POST\"]",
+        "applyPolicies": "[\"Post Accommodations Policy\"]"
+      }
+    },
+    {
+      "id": "501d1d50-e2e3-4bae-b1bf-cbe451d5f1d1",
+      "name": "Put Accommodations Permission",
+      "description": "",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"Accommodations Resource\"]",
+        "scopes": "[\"PUT\"]",
+        "applyPolicies": "[\"Put Accommodations Policy\"]"
+      }
+    },
+    {
+      "id": "9fe67bdb-7153-4472-a69e-671ed3ef667e",
+      "name": "Delete Accommodation Permission",
+      "description": "",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"Accommodation Resource\"]",
+        "scopes": "[\"DELETE\"]",
+        "applyPolicies": "[\"Delete Accommodation Policy\"]"
+      }
+    },
+    {
+      "id": "a13a147c-2bec-4187-823f-1f59d7e31ae6",
+      "name": "Get Accommodations Host Permission",
+      "description": "",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"Accommodations Host Resource\"]",
+        "scopes": "[\"GET\"]",
+        "applyPolicies": "[\"Get Accommodations Host Policy\"]"
+      }
+    },
+    {
+      "id": "077a1aef-80ca-4df7-93ab-06cbe1759514",
+      "name": "Delete Accommodation Available Periods Permission",
+      "description": "",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"Accommodation Available Period Resource\"]",
+        "scopes": "[\"DELETE\"]",
+        "applyPolicies": "[\"Delete Accommodation Available Periods Policy\"]"
+      }
+    },
+    {
+      "id": "00990045-349a-4cdd-a244-c87b3c1dec90",
+      "name": "Accommodation Add Image Permission",
+      "description": "",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"Accommodation Add Image Resource\"]",
+        "scopes": "[\"PUT\"]"
+      }
+    },
+    {
+      "id": "9985dbec-fb03-4d2a-a87b-542b99cdc72e",
+      "name": "Accommodation Add Period Permission",
+      "description": "",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"Accommodation Add Period Resource\"]",
+        "scopes": "[\"PUT\"]",
+        "applyPolicies": "[\"Accommodation Add Period Policy\"]"
+      }
+    },
+    {
+      "id": "a3baa714-098b-499d-a6a0-08c9c96cda5a",
+      "name": "Accommodation Update Editing Status",
+      "description": "",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"Accommodation Update Editing Status Resource\"]",
+        "scopes": "[\"PUT\"]",
+        "applyPolicies": "[\"Accommodation Update Editing Status Policy\"]"
+      }
+    },
+    {
+      "id": "b6768db3-62e4-4b3e-b01f-d55eb4a3aca2",
+      "name": "Put Accommodation Update Auto Accept Permission",
+      "description": "",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"Accommodation Update Auto Accept Resource\"]",
+        "scopes": "[\"PUT\"]",
+        "applyPolicies": "[\"Put Accommodation Update Auto Accept Policy\"]"
+      }
+    },
+    {
+      "id": "f1613ee5-1c55-4c34-bbf0-484c979a4c33",
+      "name": "Put Accommodation Cancellation Deadline Permission",
+      "description": "",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "scopes": "[\"PUT\"]",
+        "applyPolicies": "[\"Put Accommodation Cancellation Deadline Policy\"]"
+      }
+    },
+    {
+      "id": "57c07a65-3f66-4fe7-bf93-ecbba0a3f252",
+      "name": "Summary Permission",
+      "description": "",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"Summary Resource\"]",
+        "scopes": "[\"GET\"]",
+        "applyPolicies": "[\"Summary Policy\"]"
+      }
+    },
+    {
+      "id": "4d268c77-6fc1-4671-9b3d-e0bccd7b8e1c",
+      "name": "Get Available Periods Permission",
+      "description": "",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"Available Periods Resource\"]",
+        "scopes": "[\"GET\"]",
+        "applyPolicies": "[\"Get Available Periods Policy\"]"
+      }
+    },
+    {
+      "id": "b2fda8db-7657-4c48-940f-a490b3767c18",
+      "name": "Post Available Periods Permission",
+      "description": "",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"Available Periods Resource\"]",
+        "scopes": "[\"POST\"]",
+        "applyPolicies": "[\"Post Available Periods Policy\"]"
+      }
+    },
+    {
+      "id": "3e3e95f9-d2e6-4318-9fdf-07f04dc80bc5",
+      "name": "Delete Available Period Permission",
+      "description": "",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"Available Period Resource\"]",
+        "scopes": "[\"DELETE\"]",
+        "applyPolicies": "[\"Delete Available Period Policy\"]"
+      }
+    },
+    {
+      "id": "c988ec99-52f0-4e6d-a290-a79f6bbdb461",
+      "name": "Notifications Permission",
+      "description": "",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"Notifications Resource\"]",
+        "scopes": "[\"POST\",\"PUT\"]",
+        "applyPolicies": "[\"Notifications Policy\"]"
+      }
+    },
+    {
+      "id": "a8114351-3abf-47cb-81ed-610d3b112634",
+      "name": "Notification Permission",
+      "description": "",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"Notification Resource\"]",
+        "scopes": "[\"DELETE\",\"PUT\"]",
+        "applyPolicies": "[\"Notification Policy\"]"
+      }
+    },
+    {
+      "id": "5b1cc671-5afc-498d-b77b-8192f2535a8a",
+      "name": "Get Guest Reports Permission",
+      "description": "",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"Guest Reports Resource\"]",
+        "scopes": "[\"GET\"]",
+        "applyPolicies": "[\"Get Guest Reports Policy\"]"
+      }
+    },
+    {
+      "id": "ae0de40a-a254-4de3-b1ae-f053316b9523",
+      "name": "Post Guest Reports Permission",
+      "description": "",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"Guest Reports Resource\"]",
+        "scopes": "[\"POST\"]",
+        "applyPolicies": "[\"Post Guest Reports Policy\"]"
+      }
+    },
+    {
+      "id": "ab070ee9-fbf1-4460-a933-0d010f472aac",
+      "name": "Put Guest Reports Permission",
+      "description": "",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"Guest Reports Resource\"]",
+        "scopes": "[\"PUT\"]",
+        "applyPolicies": "[\"Put Guest Reports Policy\"]"
+      }
+    },
+    {
+      "id": "7de58c5c-6d20-4973-905d-6f3e4efa07a1",
+      "name": "Delete Guest Report Permission",
+      "description": "",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"Guest Report Policy\"]",
+        "scopes": "[\"DELETE\"]",
+        "applyPolicies": "[\"Delete Guest Report Policy\"]"
+      }
+    },
+    {
+      "id": "0882e033-6c3a-4974-aa7b-3139f589fa19",
+      "name": "Get Host Reports Permission",
+      "description": "",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"Host Reports Resource\"]",
+        "scopes": "[\"GET\"]",
+        "applyPolicies": "[\"Get Host Reports Policy\"]"
+      }
+    },
+    {
+      "id": "ea8cc026-db73-4f30-824f-384b6b16ebf3",
+      "name": "Post Host Reports Permission",
+      "description": "",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"Host Reports Resource\"]",
+        "scopes": "[\"POST\"]",
+        "applyPolicies": "[\"Post Host Reports Policy\"]"
+      }
+    },
+    {
+      "id": "dabc120f-a949-480b-be3d-2a0fb056a9ed",
+      "name": "Put Host Reports Permission",
+      "description": "",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"Host Reports Resource\"]",
+        "scopes": "[\"PUT\"]",
+        "applyPolicies": "[\"Put Host Reports Policy\"]"
+      }
+    },
+    {
+      "id": "4a9bb9e0-ebc8-4493-b51d-d3b851c6400f",
+      "name": "Delete Host Report Permission",
+      "description": "",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"Host Report Resource\"]",
+        "scopes": "[\"DELETE\"]",
+        "applyPolicies": "[\"Delete Host Report Policy\"]"
+      }
+    },
+    {
+      "id": "494018a5-5573-48e5-898b-40687c3d663e",
+      "name": "Get Review Reports Permission",
+      "description": "",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"Review Reports Resource\"]",
+        "scopes": "[\"GET\"]",
+        "applyPolicies": "[\"Get Review Reports Policy\"]"
+      }
+    },
+    {
+      "id": "89c55c28-8253-4d57-aa46-077054c97bbc",
+      "name": "Post Review Reports Permission",
+      "description": "",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"Review Reports Resource\"]",
+        "scopes": "[\"POST\"]",
+        "applyPolicies": "[\"Post Review Reports Policy\"]"
+      }
+    },
+    {
+      "id": "24088f37-731c-4512-bc22-0dbc86a603ee",
+      "name": "Put Review Reports Permission",
+      "description": "",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"Review Reports Resource\"]",
+        "scopes": "[\"PUT\"]",
+        "applyPolicies": "[\"Put Review Reports Policy\"]"
+      }
+    },
+    {
+      "id": "efbaaff1-406f-4807-861c-2c37f2fc98df",
+      "name": "Get Review Report Permission",
+      "description": "",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"Review Report Resource\"]",
+        "scopes": "[\"GET\"]",
+        "applyPolicies": "[\"Get Review Report Policy\"]"
+      }
+    },
+    {
+      "id": "befe6ac5-311d-47d7-9d9b-2bfb51dd5f82",
+      "name": "Delete Review Report Permission",
+      "description": "",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"Review Report Resource\"]",
+        "scopes": "[\"DELETE\"]",
+        "applyPolicies": "[\"Delete Review Report Policy\"]"
+      }
+    },
+    {
+      "id": "8709893b-d68f-4d6d-a8e5-37fb511e6848",
+      "name": "Get User Reports Permission",
+      "description": "",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"User Reports Resource\"]",
+        "scopes": "[\"GET\"]",
+        "applyPolicies": "[\"Get User Reports Policy\"]"
+      }
+    }
+  ],
+  "scopes": [
+    {
+      "id": "27dbb8c7-593f-4287-bc0d-4291aba57f48",
+      "name": "GET",
+      "iconUri": ""
+    },
+    {
+      "id": "e750e889-0f27-4126-baf0-6416f8a6fbac",
+      "name": "POST",
+      "iconUri": ""
+    },
+    {
+      "id": "3fe94964-88e7-4c7f-83c2-d9ceabb66a60",
+      "name": "PUT",
+      "iconUri": ""
+    },
+    {
+      "id": "e3de3239-68b6-4692-8b9e-f74017c75d49",
+      "name": "DELETE",
+      "iconUri": ""
+    },
+    {
+      "id": "c4469379-3fd9-40fc-b56d-7f531789c824",
+      "name": "OPTIONS",
+      "iconUri": ""
+    }
+  ],
+  "decisionStrategy": "UNANIMOUS"
+}

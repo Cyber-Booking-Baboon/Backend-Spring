@@ -1,5 +1,6 @@
 package rs.ac.uns.ftn.BookingBaboon.controllers.certificates;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1/certificate-requests")
+@SecurityRequirement(name = "Keycloak")
 public class CertificateRequestController {
     private final ICertificateRequestService service;
     private final ModelMapper mapper;

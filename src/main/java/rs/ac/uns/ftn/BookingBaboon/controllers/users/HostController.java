@@ -1,16 +1,20 @@
 package rs.ac.uns.ftn.BookingBaboon.controllers.users;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rs.ac.uns.ftn.BookingBaboon.domain.notifications.NotificationType;
 import rs.ac.uns.ftn.BookingBaboon.domain.reservation.Reservation;
+import rs.ac.uns.ftn.BookingBaboon.domain.users.Guest;
 import rs.ac.uns.ftn.BookingBaboon.domain.users.Host;
 import rs.ac.uns.ftn.BookingBaboon.dtos.users.hosts.*;
 import rs.ac.uns.ftn.BookingBaboon.services.users.interfaces.IHostService;
 import rs.ac.uns.ftn.BookingBaboon.dtos.users.hosts.HostResponse;
+import rs.ac.uns.ftn.BookingBaboon.services.users.ldap.LdapUserService;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -19,9 +23,13 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("api/v1/hosts")
+@SecurityRequirement(name = "Keycloak")
 public class HostController {
     private final IHostService service;
     private final ModelMapper mapper;
+
+    @Autowired
+    private LdapUserService ldapUserService;
 
     @GetMapping
     public ResponseEntity<Collection<HostResponse>> getHosts() {
@@ -43,7 +51,9 @@ public class HostController {
 
     @PostMapping({"/"})
     public ResponseEntity<HostResponse> create(@RequestBody HostCreateRequest host) {
-        return new ResponseEntity<>(mapper.map(service.create(mapper.map(host, Host.class)),HostResponse.class), HttpStatus.CREATED);
+        Host result = service.create(mapper.map(host, Host.class));
+        ldapUserService.createUser(result.getId().toString(), result.getEmail(), host.getPassword(), result.getFirstName(), result.getLastName(), "host");
+        return new ResponseEntity<>(mapper.map(result, HostResponse.class), HttpStatus.CREATED);
     }
 
     @PutMapping({"/"})

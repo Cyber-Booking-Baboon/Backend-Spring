@@ -1,5 +1,6 @@
 package rs.ac.uns.ftn.BookingBaboon.controllers.accommodation_handling;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1/accommodations")
+@SecurityRequirement(name = "Keycloak")
 public class AccommodationController {
 
     private final IAccommodationService service;
@@ -56,14 +58,12 @@ public class AccommodationController {
         return new ResponseEntity<>(mapper.map(accommodation, AccommodationResponse.class), HttpStatus.OK);
     }
 
-    @PreAuthorize("hasAuthority('HOST')")
     @PostMapping
     public ResponseEntity<AccommodationResponse> create(@RequestBody AccommodationCreateRequest accommodation) {
         Accommodation result = service.create(mapper.map(accommodation, Accommodation.class));
         return new ResponseEntity<>(mapper.map(result, AccommodationResponse.class), HttpStatus.CREATED);
     }
 
-    @PreAuthorize("hasAnyAuthority('HOST', 'ADMIN')")
     @PutMapping
     public ResponseEntity<AccommodationResponse> update(@RequestBody AccommodationRequest accommodation) {
         Accommodation result = service.update(mapper.map(accommodation, Accommodation.class));
@@ -146,7 +146,6 @@ public class AccommodationController {
         return new ResponseEntity<>(mapper.map(accommodation, AccommodationResponse.class), HttpStatus.OK);
     }
 
-    @PreAuthorize("hasAuthority('HOST')")
     @PutMapping("/{accommodationId}/addPeriod/{periodId}")
     public ResponseEntity<AccommodationResponse> addPeriod(@PathVariable Long periodId, @PathVariable Long accommodationId){
         Accommodation accommodation = service.addPeriod(periodId, accommodationId);

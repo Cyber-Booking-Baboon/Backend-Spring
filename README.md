@@ -30,3 +30,6 @@ Login credentials for test data:
 - SysAdmin:
   - email: sys.admin@example.com , password: helenspass
 
+
+### Command for starting keycloak
+- kc.bat start-dev --http-port=8180

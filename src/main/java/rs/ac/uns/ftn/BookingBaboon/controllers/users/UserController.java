@@ -1,5 +1,6 @@
 package rs.ac.uns.ftn.BookingBaboon.controllers.users;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
@@ -15,7 +16,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-import rs.ac.uns.ftn.BookingBaboon.config.security.JwtTokenUtil;
+//import rs.ac.uns.ftn.BookingBaboon.config.security.JwtTokenUtil;
 import rs.ac.uns.ftn.BookingBaboon.domain.notifications.NotificationType;
 import rs.ac.uns.ftn.BookingBaboon.domain.users.User;
 import rs.ac.uns.ftn.BookingBaboon.dtos.users.*;
@@ -31,14 +32,16 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("api/v1/users")
+@SecurityRequirement(name = "Keycloak")
 public class UserController {
 
     private final IUserService service;
     private final IReservationService reservationService;
     private final ModelMapper mapper;
-    private final AuthenticationManager authenticationManager;
-    private final JwtTokenUtil jwtTokenUtil;
+//    private final AuthenticationManager authenticationManager;
+//    private final JwtTokenUtil jwtTokenUtil;
     private final SecurityContext sc = SecurityContextHolder.getContext();
+
 
 
     @GetMapping
@@ -64,12 +67,13 @@ public class UserController {
         return new ResponseEntity<>(mapper.map(service.create(mapper.map(user, User.class)),UserResponse.class), HttpStatus.CREATED);
     }
 
+
+
     @PutMapping({"/"})
     public ResponseEntity<UserResponse> update(@RequestBody UserUpdateRequest user) {
         return new ResponseEntity<>(mapper.map(service.update(mapper.map(user, User.class)),UserResponse.class),HttpStatus.OK);
     }
 
-    @PreAuthorize("hasAnyAuthority('GUEST', 'HOST', 'ADMIN')")
     @DeleteMapping({"/{userId}"})
     public ResponseEntity<UserResponse> remove(@PathVariable Long userId) {
         User user = service.remove(userId);
@@ -90,7 +94,6 @@ public class UserController {
         return new ResponseEntity<>( mapper.map(user, UserProfile.class), HttpStatus.OK);
     }*/
 
-    @PreAuthorize("hasAnyAuthority('GUEST', 'HOST', 'ADMIN')")
     @GetMapping({"/profile/{userId}"})
     public ResponseEntity<UserProfile> getProfile(@PathVariable Long userId) {
 
@@ -110,28 +113,27 @@ public class UserController {
         return new ResponseEntity<>( mapper.map(user, UserResponse.class), HttpStatus.OK);
     }
 
-    @PostMapping({"/login"})
-    public ResponseEntity<UserResponse> login(@RequestBody UserLoginRequest request){
-        UsernamePasswordAuthenticationToken authReq = new UsernamePasswordAuthenticationToken(request.getEmail(),
-                request.getPassword());
-        Authentication auth = authenticationManager.authenticate(authReq);
+//    @PostMapping({"/login"})
+//    public ResponseEntity<UserResponse> login(@RequestBody UserLoginRequest request){
+//        UsernamePasswordAuthenticationToken authReq = new UsernamePasswordAuthenticationToken(request.getEmail(),
+//                request.getPassword());
+//        Authentication auth = authenticationManager.authenticate(authReq);
+//
+//        sc.setAuthentication(auth);
+//
+//        User user = service.getByEmail(request.getEmail());
+//
+//        if (!user.isActive()){
+//            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+//        }
+//
+//        UserDetails userDetails = service.loadUserByUsername(user.getEmail());
+//        String token = jwtTokenUtil.generateToken(userDetails, user.getId());
+//        user.setJwt(token);
+//
+//        return new ResponseEntity<>( mapper.map(user, UserResponse.class), HttpStatus.OK);
+//    }
 
-        sc.setAuthentication(auth);
-
-        User user = service.getByEmail(request.getEmail());
-
-        if (!user.isActive()){
-            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-        }
-
-        UserDetails userDetails = service.loadUserByUsername(user.getEmail());
-        String token = jwtTokenUtil.generateToken(userDetails, user.getId());
-        user.setJwt(token);
-
-        return new ResponseEntity<>( mapper.map(user, UserResponse.class), HttpStatus.OK);
-    }
-
-    @PreAuthorize("hasAnyAuthority('GUEST', 'HOST', 'ADMIN', 'SYSADMIN')")
     @GetMapping("/logout")
     public ResponseEntity logout() {
 

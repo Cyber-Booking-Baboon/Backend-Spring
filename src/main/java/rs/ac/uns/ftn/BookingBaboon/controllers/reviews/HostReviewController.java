@@ -1,5 +1,6 @@
 package rs.ac.uns.ftn.BookingBaboon.controllers.reviews;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1/host-reviews")
+@SecurityRequirement(name = "Keycloak")
 public class HostReviewController {
 
     private final IHostReviewService service;
@@ -47,7 +49,6 @@ public class HostReviewController {
     }
 
     // Create a new host review
-    @PreAuthorize("hasAuthority('GUEST')")
     @PostMapping({"/"})
     public ResponseEntity<HostReviewResponse> create(@RequestBody HostReviewCreateRequest hostReview) {
 
@@ -62,7 +63,6 @@ public class HostReviewController {
     }
 
     // Delete a host review by ID
-    @PreAuthorize("hasAnyAuthority('GUEST', 'ADMIN')")
     @DeleteMapping("/{hostReviewId}")
     public ResponseEntity<HostReviewResponse> remove(@PathVariable Long hostReviewId) {
 
