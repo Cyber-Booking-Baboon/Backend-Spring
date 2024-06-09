@@ -1,0 +1,114 @@
+{
+  "realm" : "CyberBookingBaboon",
+  "users" : [ {
+    "id" : "50aad55c-697c-4d2f-9577-fccb6eda4809",
+    "username" : "admin",
+    "emailVerified" : true,
+    "createdTimestamp" : 1716019464387,
+    "enabled" : true,
+    "totp" : false,
+    "credentials" : [ {
+      "id" : "74277227-776a-4fd1-a1fc-323487a363de",
+      "type" : "password",
+      "userLabel" : "My password",
+      "createdDate" : 1716019483320,
+      "secretData" : "{\"value\":\"YdhsetJpRjriIFJN9Ds7KAhgXknDp6oYZwOATvOdUUKYrjxk07TL1VBx/USRMM9rRX+GKKP06hB4z5QauwJIcA==\",\"salt\":\"KsJ4k5OFzQ230ORvwIPyVw==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":210000,\"algorithm\":\"pbkdf2-sha512\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "admin", "default-roles-cyberbookingbaboon" ],
+    "clientRoles" : {
+      "realm-management" : [ "realm-admin" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "2c56e44a-a877-4375-a86b-5e5f1311eee5",
+    "username" : "branko.maric300@gmail.com",
+    "lastName" : "Maric",
+    "email" : "branko.maric300@gmail.com",
+    "emailVerified" : false,
+    "attributes" : {
+      "LDAP_ENTRY_DN" : [ "uid=branko.maric300@gmail.com,ou=users,dc=example,dc=com" ],
+      "Airplane" : [ "12" ],
+      "LDAP_ID" : [ "c8a4f346-45bb-4f72-8137-cd12241f162c" ]
+    },
+    "createdTimestamp" : 1717677154950,
+    "enabled" : true,
+    "totp" : true,
+    "federationLink" : "9f3c8019-073a-44f4-9cb7-ac21ce8a7465",
+    "credentials" : [ {
+      "id" : "ad2fa8f8-204c-4f5e-bf97-4a499cef9aa6",
+      "type" : "otp",
+      "userLabel" : "",
+      "createdDate" : 1717681250066,
+      "secretData" : "{\"value\":\"6hK1eABPp8ajii4FSUsb\"}",
+      "credentialData" : "{\"subType\":\"totp\",\"digits\":6,\"counter\":0,\"period\":30,\"algorithm\":\"HmacSHA1\"}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "federatedIdentities" : [ {
+      "identityProvider" : "google",
+      "userId" : "101688993903829110565",
+      "userName" : "branko.maric300@gmail.com"
+    } ],
+    "realmRoles" : [ "guest", "default-roles-cyberbookingbaboon" ],
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "1db9e276-4e68-46e7-9eb5-71c0250c88bd",
+    "username" : "ilija.beslin@gmail.com",
+    "lastName" : "Beslin",
+    "email" : "ilija.beslin@gmail.com",
+    "emailVerified" : false,
+    "attributes" : {
+      "LDAP_ENTRY_DN" : [ "uid=ilija.beslin@gmail.com,ou=users,dc=example,dc=com" ],
+      "Airplane" : [ "13" ],
+      "LDAP_ID" : [ "98547fac-47ac-45ad-8b04-1911d6e10bc6" ]
+    },
+    "createdTimestamp" : 1717678130590,
+    "enabled" : true,
+    "totp" : true,
+    "federationLink" : "9f3c8019-073a-44f4-9cb7-ac21ce8a7465",
+    "credentials" : [ {
+      "id" : "47d60dfe-a257-47d0-bee4-f64492505d0d",
+      "type" : "otp",
+      "userLabel" : "",
+      "createdDate" : 1717681334934,
+      "secretData" : "{\"value\":\"MukihMP1rLRtkd4l7wWy\"}",
+      "credentialData" : "{\"subType\":\"totp\",\"digits\":6,\"counter\":0,\"period\":30,\"algorithm\":\"HmacSHA1\"}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "federatedIdentities" : [ {
+      "identityProvider" : "google",
+      "userId" : "115620303950332446155",
+      "userName" : "ilija.beslin@gmail.com"
+    } ],
+    "realmRoles" : [ "guest", "default-roles-cyberbookingbaboon" ],
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "0ae7b894-6fa5-46b1-aede-3c30a69e191c",
+    "username" : "sabaneskusaulic@gmail.com",
+    "lastName" : "saulic",
+    "email" : "sabaneskusaulic@gmail.com",
+    "emailVerified" : false,
+    "attributes" : {
+      "LDAP_ENTRY_DN" : [ "uid=sabaneskusaulic@gmail.com,ou=users,dc=example,dc=com" ],
+      "Airplane" : [ "14" ],
+      "LDAP_ID" : [ "d5afb1fa-7899-40e8-a5ab-db4a1189e9be" ]
+    },
+    "createdTimestamp" : 1717681101504,
+    "enabled" : true,
+    "totp" : false,
+    "federationLink" : "9f3c8019-073a-44f4-9cb7-ac21ce8a7465",
+    "credentials" : [ ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ "CONFIGURE_TOTP" ],
+    "realmRoles" : [ "guest", "default-roles-cyberbookingbaboon" ],
+    "notBefore" : 0,
+    "groups" : [ ]
+  } ]
+}

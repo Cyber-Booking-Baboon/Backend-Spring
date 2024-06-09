@@ -1,5 +1,6 @@
 package rs.ac.uns.ftn.BookingBaboon.controllers.reviews;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
@@ -18,12 +19,12 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1/reviews")
+@SecurityRequirement(name = "Keycloak")
 public class ReviewController {
 
     private final IReviewService service;
     private final ModelMapper mapper;
 
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
     @DeleteMapping("/{ReviewId}")
     public ResponseEntity<ReviewReferenceRequest> remove(@PathVariable Long ReviewId) {
 

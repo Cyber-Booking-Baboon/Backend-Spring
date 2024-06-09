@@ -1,5 +1,6 @@
 package rs.ac.uns.ftn.BookingBaboon.controllers.reports;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
@@ -17,12 +18,12 @@ import java.util.Collection;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1/user-reports")
+@SecurityRequirement(name = "Keycloak")
 public class UserReportController {
 
     private final IUserReportService service;
     private final ModelMapper mapper;
 
-    @PreAuthorize("hasAuthority('ADMIN')")
 
     @GetMapping
     public ResponseEntity<Collection<Report>> getUserReports() {

@@ -1,5 +1,6 @@
 package rs.ac.uns.ftn.BookingBaboon.controllers.reports;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1/host-reports")
+@SecurityRequirement(name = "Keycloak")
 public class HostReportController {
 
     private final IHostReportService service;
@@ -44,7 +46,6 @@ public class HostReportController {
     }
 
     // Create a new host report
-    @PreAuthorize("hasAuthority('GUEST')")
     @PostMapping({"/"})
     public ResponseEntity<HostReportResponse> create(@RequestBody HostReportCreateRequest hostReport) {
 
@@ -59,7 +60,6 @@ public class HostReportController {
     }
 
     // Delete a host report by ID
-    @PreAuthorize("hasAuthority('GUEST')")
     @DeleteMapping("/{hostReportId}")
     public ResponseEntity<HostReportResponse> remove(@PathVariable Long hostReportId) {
 

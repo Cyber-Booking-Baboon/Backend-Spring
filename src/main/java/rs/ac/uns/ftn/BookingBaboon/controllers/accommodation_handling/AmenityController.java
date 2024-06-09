@@ -1,9 +1,11 @@
 package rs.ac.uns.ftn.BookingBaboon.controllers.accommodation_handling;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import rs.ac.uns.ftn.BookingBaboon.domain.accommodation_handling.Amenity;
 import rs.ac.uns.ftn.BookingBaboon.domain.accommodation_handling.AvailablePeriod;
@@ -19,6 +21,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1/amenities")
+@SecurityRequirement(name = "Keycloak")
 public class AmenityController {
 
     private final IAmenityService service;

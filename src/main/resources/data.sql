@@ -10,7 +10,8 @@ INSERT INTO public.users (
       (7, '135 Maple St', 'david.davis@example.com', 'David', ARRAY[]::smallint[], 1, 'Davis', '$2a$10$3umvo5Gd8.RPbUooFdGdx.4klOb9vCHj4pAP4t8.sXcOL6mbG3mAa', '+3815553456', 1),
       (8, '246 Pine St', 'grace.jones@example.com', 'Grace', ARRAY[]::smallint[], 1, 'Jones', '$2a$10$Dnm26vmvm.IEdplKvEiVeORQEOHtbB2moQzXHvqTtyCwkqVmBfU6S', '+3815557890', 1),
       (9, '579 Oak St', 'frank.white@example.com', 'Frank', ARRAY[]::smallint[], 1, 'White', '$2a$10$21i9qDk5BDGYMyTJSXsb0u2nvUTvM9K9LrXiYLyNiq4cpbDX6czMi', '+3815559034', 1),
-      (10, '802 Walnut St', 'helen.martin@example.com', 'Helen', ARRAY[]::smallint[], 1, 'Martin', '$2a$10$Kf.ME6kIpdbgWgUXeJCi5O9xE26BJ00m2Ukm9ZikN67UHudNGuEq2', '+3815551230', 3)
+      (10, '802 Walnut St', 'helen.martin@example.com', 'Helen', ARRAY[]::smallint[], 1, 'Martin', '$2a$10$Kf.ME6kIpdbgWgUXeJCi5O9xE26BJ00m2Ukm9ZikN67UHudNGuEq2', '+3815551230', 3),
+      (11, '802 Walnut St', 'sys.admin@example.com', 'Helen', ARRAY[]::smallint[], 1, 'Martin', '$2a$10$Kf.ME6kIpdbgWgUXeJCi5O9xE26BJ00m2Ukm9ZikN67UHudNGuEq2', '+3815551230', 4)
     ON CONFLICT (id) DO NOTHING ;
 
 INSERT INTO public.hosts(id)
@@ -30,6 +31,10 @@ INSERT INTO public.guests (id) VALUES
 
 INSERT INTO public.admin (id) VALUES
     (10)
+    ON CONFLICT (id) DO NOTHING;
+
+INSERT INTO public.sys_admin (id) VALUES
+    (11)
     ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO public.notifications(id, is_read, message, time_created, type, user_id)
